@@ -1,8 +1,11 @@
+import React from 'react';
 
 function ShoppingPage(params) {
 
-
-    return(<div>Welcome to SHopping page</div>)
+debugger
+    return(<div>Welcome to Shopping page
+          <h1>Almost before we knew it, we ha</h1>
+</div>)
     
 }
 
