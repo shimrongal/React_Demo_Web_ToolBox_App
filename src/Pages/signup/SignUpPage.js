@@ -1,5 +1,6 @@
-
+import "./SignUpPage.css"
 import React, { useCallback } from "react";
+import { Button, Col, Form } from "react-bootstrap";
 import { withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 
@@ -7,7 +8,8 @@ const SignUpPage = ({ history }) => {
   
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
-    const { email, password } = event.target.elements;
+    //To do create a new user 
+    const { email, password , address , address2 } = event.target.elements;
     try {
       await app
         .auth()
@@ -19,19 +21,35 @@ const SignUpPage = ({ history }) => {
   }, [history]);
 
   return (
-    <div>
+    <div id="p-sign-in">
       <h1>Sign up</h1>
-      <form onSubmit={handleSignUp}>
-        <label>
-          
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Sign Up</button>
-      </form>
+      <Form onSubmit={handleSignUp}>
+        <Form.Row>
+          <Form.Group as={Col} controlId="formGridEmail">
+            <Form.Label>Email</Form.Label>
+            <Form.Control name="email" type="email" placeholder="Enter email" />
+          </Form.Group>
+
+          <Form.Group as={Col} controlId="formGridPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control name="password" type="password" placeholder="Password" />
+          </Form.Group>
+        </Form.Row>
+
+        <Form.Group controlId="formGridAddress1">
+          <Form.Label>Address</Form.Label>
+          <Form.Control name="address" placeholder="1234 Main St" />
+        </Form.Group>
+
+        <Form.Group controlId="formGridAddress2">
+          <Form.Label>Address 2</Form.Label>
+          <Form.Control name="address2" placeholder="Apartment, studio, or floor" />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Submit
+        </Button>
+      </Form>
     </div>
   );
 };

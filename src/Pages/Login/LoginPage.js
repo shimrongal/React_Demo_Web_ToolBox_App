@@ -1,4 +1,4 @@
-import '../login/LoginPage.css';
+import './LoginPage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import React, { useCallback, useContext } from "react";
@@ -46,10 +46,11 @@ const LoginPage = ({ history }) => {
             <Form.Label>Password</Form.Label>
             <Form.Control type="password" placeholder="Password" />
           </Form.Group>
-          <Form.Group controlId="formBasicCheckbox">
+          <Form.Group className="flex-group" controlId="formBasicCheckbox">
             <Form.Label>
               Forgot password?
             </Form.Label> 
+            <Button variant="primary" onClick={()=> history.push("/signup") } >SignUp</Button>
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit
