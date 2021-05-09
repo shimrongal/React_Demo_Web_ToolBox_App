@@ -1,11 +1,64 @@
-import React from 'react';
-import './LoginPage.css';
+import '../login/LoginPage.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
+import React, { useCallback, useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import  app   from "../../utils/FirebaseConfig";
+import {AuthContext} from "../../utils/Auth";
+import { Button, Form } from 'react-bootstrap';
 
+const LoginPage = ({ history }) => {
+  const handleLogin = useCallback(
+    async event => {
+      event.preventDefault();
+      const { email, password } = event.target.elements;
+      try {
+        await app
+          .auth()
+          .signInWithEmailAndPassword(email.value, password.value);
+        history.push("/");
+      } catch (error) {
+        alert(error);
+      }
+    },
+    [history]
+  );
 
-function LoginPage(props) {
-    return(<div>Welcome to my</div>)
-}
+  const { currentUser } = useContext(AuthContext);
 
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
-export default LoginPage;
+  return (
+    <div id="p-login">
+      <h1>Log in</h1>
+      <Form onSubmit={handleLogin}>
+        <Form.Group controlId="formBasicEmail">
+            <Form.Label>Email address</Form.Label>
+            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Text className="text-muted">
+              We'll never share your email with anyone else.
+            </Form.Text>
+        </Form.Group>
+
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Password</Form.Label>
+            <Form.Control type="password" placeholder="Password" />
+          </Form.Group>
+          <Form.Group controlId="formBasicCheckbox">
+            <Form.Label>
+              Forgot password?
+            </Form.Label> 
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Submit
+          </Button>
+      </Form>
+     
+
+    </div>
+  );
+};
+
+export default withRouter(LoginPage);
