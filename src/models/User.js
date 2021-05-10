@@ -11,9 +11,7 @@ class UserModel{
         this.lastName  = newUser.lastName;
         this.email     = newUser.email;
         this.address   = newUser.address;
-        this.age       = newUser.age; 
     }
-
 }
 
 export default UserModel;
