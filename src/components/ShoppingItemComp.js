@@ -7,7 +7,9 @@ import ShoppingItemModel from "../models/ShoppingItemModel"
  */
 function ShoppingItemComp({item}) {
     
-    return(<div>Item name in ShoppingItemComp</div>)
+    return(<div>
+        <p>{item.itemName + " " +item.itemBrand + " " + item.itemQuantity}</p>
+    </div>)
 }
 
  export default ShoppingItemComp;
