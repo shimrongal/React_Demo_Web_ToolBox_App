@@ -9,6 +9,7 @@ import LoginPage from './pages/login/LoginPage';
 import ShoppingPage from './pages/shopping_list/ShoppingPage'
 import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
+import { useState } from 'react';
 
 
 /**
@@ -21,13 +22,20 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 
 function App() {
+
+  const [userList , updateUsersList] = useState([]);
+
+  alert(userList.length);
+
+
+
   return (
     <AuthProvider id="p-app-container">
       <HashRouter>
         <Switch>      
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login" component={LoginPage}></Route>
-          <Route exact path="/signup" component={SignUpPage} />
+          <Route exact path="/signup" ><SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping_page" component={ShoppingPage}></Route>
         </Switch>
       </HashRouter>

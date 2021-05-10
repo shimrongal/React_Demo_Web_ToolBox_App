@@ -3,6 +3,7 @@ import React, { useCallback } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import { withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
+import UserModel from "../../models/User";
 
 
 /**
@@ -19,12 +20,15 @@ import  app   from "../../utils/FirebaseConfig";
 
 
 
-const SignUpPage = ({ history }) => {
+const SignUpPage = ({ history , userList, updateUsersList}) => {
   
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
     //To do create a new user 
-    const { email, password , address , address2 } = event.target.elements;
+    const {email, password , firstName , lastName , address} = event.target.elements;
+
+    updateUsersList( userList.concat( new UserModel(firstName.value, lastName.value, email.value, password.value ,address.value) ) );
+
     try {
       await app
         .auth()
@@ -39,6 +43,16 @@ const SignUpPage = ({ history }) => {
     <div id="p-sign-in">
       <h1>Sign up</h1>
       <Form onSubmit={handleSignUp}>
+
+      <Form.Group controlId="formGridFirestName">
+          <Form.Label>First Name</Form.Label>
+          <Form.Control name="firstName" placeholder="Enter your first name" />
+        </Form.Group>
+        <Form.Group controlId="formGridLastName">
+          <Form.Label>Last Name</Form.Label>
+          <Form.Control name="lastName" placeholder="Enter your last name" />
+        </Form.Group>
+        
         <Form.Row>
           <Form.Group as={Col} controlId="formGridEmail">
             <Form.Label>Email</Form.Label>
@@ -56,10 +70,7 @@ const SignUpPage = ({ history }) => {
           <Form.Control name="address" placeholder="1234 Main St" />
         </Form.Group>
 
-        <Form.Group controlId="formGridAddress2">
-          <Form.Label>Address 2</Form.Label>
-          <Form.Control name="address2" placeholder="Apartment, studio, or floor" />
-        </Form.Group>
+
 
         <Button variant="primary" type="submit">
           Submit
