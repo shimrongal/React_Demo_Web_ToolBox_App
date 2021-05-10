@@ -25,7 +25,7 @@ import ShoppingItemModel from './models/ShoppingItemModel';
 function App() {
   
   const [userList , updateUsersList] = useState([[]]);
-  const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel(1,'itemName','brand Name' , 1)]);
+  const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel('itemName','brand Name' , 1)]);
 
   
 
