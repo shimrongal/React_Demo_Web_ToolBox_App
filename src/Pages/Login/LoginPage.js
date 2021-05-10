@@ -11,7 +11,7 @@ const LoginPage = ({ history }) => {
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
-      const { email, password } = event.target.elements;
+      const { email, password , } = event.target.elements;
       try {
         await app
           .auth()
@@ -36,7 +36,7 @@ const LoginPage = ({ history }) => {
       <Form onSubmit={handleLogin}>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control name="email" type="email" placeholder="Enter email" />
             <Form.Text className="text-muted">
               We'll never share your email with anyone else.
             </Form.Text>
@@ -44,7 +44,7 @@ const LoginPage = ({ history }) => {
 
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" placeholder="Password" />
+            <Form.Control name="password"  type="password" placeholder="Password" />
           </Form.Group>
           <Form.Group className="flex-group" controlId="formBasicCheckbox">
             <Form.Label>
