@@ -6,6 +6,17 @@ import { withRouter, Redirect } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 import {AuthContext} from "../../utils/Auth";
 import { Button, Form } from 'react-bootstrap';
+/**
+ * Login page 
+ *   *** This class will use Firebase auth
+ * 
+ * TODO:
+ *  1. Handle forget password
+ *  2. Set nice fonts,
+ *  3. Design the title 
+ **/
+
+
 
 const LoginPage = ({ history }) => {
   const handleLogin = useCallback(

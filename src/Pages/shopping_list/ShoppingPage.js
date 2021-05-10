@@ -1,11 +1,23 @@
 import React from 'react';
+import NavBarComp from '../../components/NavBarComp';
+
+/**
+ * Shopping page
+ * 
+ * @param {*} params 
+ * 
+ * 
+ * TODO:
+ *  
+ */
 
 function ShoppingPage(params) {
 
-debugger
-    return(<div>Welcome to Shopping page
+    return(<div>
+          <NavBarComp />
           <h1>Almost before we knew it, we ha</h1>
-</div>)
+          
+        </div>)
     
 }
 

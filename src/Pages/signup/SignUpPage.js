@@ -4,6 +4,19 @@ import { Button, Col, Form } from "react-bootstrap";
 import { withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 
+
+/**
+ * SignUp page 
+ *   *** This class will sign in new user to Firebase auth server
+ * 
+ * TODO:
+ *  1. Create a User class
+ *  2. Set nice fonts,
+ *  3. Design the title 
+ **/
+
+
+
 const SignUpPage = ({ history }) => {
   
   const handleSignUp = useCallback(async event => {

@@ -3,5 +3,11 @@
   padding: 0;
   height: 100vw;
   text-align: center;
-  background-color: darksalmon;
+  background-color: lightsalmon;
 }
+
+.navbar {
+  width: 100%;
+  padding: 0 10%;
+}
+
