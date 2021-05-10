@@ -2,6 +2,8 @@ import React from 'react';
 import NavBarComp from '../../components/NavBarComp';
 
 /**
+ * Created by Gal Shimron on 9/05/2021.
+ * 
  * Shopping page
  * 
  * @param {*} params 

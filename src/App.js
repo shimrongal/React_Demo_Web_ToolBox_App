@@ -12,6 +12,8 @@ import PrivateRoute from "./utils/PrivateRoute";
 
 
 /**
+ * Created by Gal Shimron on 9/05/2021.
+ * 
  * Main application class 
  *   * This class will mange all application Routes and states
  *    

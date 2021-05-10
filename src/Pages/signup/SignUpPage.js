@@ -6,6 +6,8 @@ import  app   from "../../utils/FirebaseConfig";
 
 
 /**
+ * Created by Gal Shimron on 9/05/2021.
+ * 
  * SignUp page 
  *   *** This class will sign in new user to Firebase auth server
  * 

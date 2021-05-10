@@ -7,6 +7,8 @@ import { Button } from 'react-bootstrap';
 import NavBarComp from '../../components/NavBarComp';
 
 /**
+ * Created by Gal Shimron on 9/05/2021.
+ * 
  * Home class is the Application Landing page.
  * @param {*} param0 
  */

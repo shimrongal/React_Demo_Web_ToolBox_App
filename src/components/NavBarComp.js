@@ -2,12 +2,12 @@ import {  Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 /**
+ * Created by Gal Shimron on 10/05/2021.
+ * 
  * Navbar manger class
  * 
  * @param {*} params
  * 
- * 
- *  
  */
 
 function NavBarComp(params) {

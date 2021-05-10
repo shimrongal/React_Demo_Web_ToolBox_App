@@ -7,6 +7,8 @@ import  app   from "../../utils/FirebaseConfig";
 import {AuthContext} from "../../utils/Auth";
 import { Button, Form } from 'react-bootstrap';
 /**
+ * Created by Gal Shimron on 9/05/2021.
+ * 
  * Login page 
  *   *** This class will use Firebase auth
  * 
