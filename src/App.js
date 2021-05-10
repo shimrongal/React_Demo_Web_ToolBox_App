@@ -11,6 +11,7 @@ import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useState } from 'react';
 import ShoppingItemModel from './models/ShoppingItemModel';
+import ParkingPage from './pages/parking/ParkingPage';
 
 
 /**
@@ -27,8 +28,6 @@ function App() {
   const [userList , updateUsersList] = useState([[]]);
   const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel('itemName','brand Name' , 1)]);
 
-  
-
   return (
     <AuthProvider id="p-app-container">
       <HashRouter>
@@ -36,7 +35,8 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login"  component={LoginPage}></Route>
           <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_page"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
+          <Route exact path="/shopping-list"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
+          <Route exact path="/parking"      ><ParkingPage /> </Route>
         </Switch>
       </HashRouter>
       
