@@ -3,7 +3,7 @@ import React, { useCallback } from "react";
 import { Button, Col, Form } from "react-bootstrap";
 import { withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
-import UserModel from "../../models/User";
+import UserModel from "../../models/UserModel";
 
 
 /**
