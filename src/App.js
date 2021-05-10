@@ -10,6 +10,7 @@ import ShoppingPage from './pages/shopping_list/ShoppingPage'
 import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useState } from 'react';
+import ShoppingItemModel from './models/ShoppingItemModel';
 
 
 /**
@@ -22,21 +23,20 @@ import { useState } from 'react';
 
 
 function App() {
+  
+  const [userList , updateUsersList] = useState([[]]);
+  const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel(1,'itemName','brand Name' , 1)]);
 
-  const [userList , updateUsersList] = useState([]);
-
-  alert(userList.length);
-
-
+  
 
   return (
     <AuthProvider id="p-app-container">
       <HashRouter>
         <Switch>      
           <PrivateRoute exact path="/" component={Home} />
-          <Route exact path="/login" component={LoginPage}></Route>
-          <Route exact path="/signup" ><SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_page" component={ShoppingPage}></Route>
+          <Route exact path="/login"  component={LoginPage}></Route>
+          <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
+          <Route exact path="/shopping_page"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
         </Switch>
       </HashRouter>
       
