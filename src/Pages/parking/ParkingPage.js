@@ -37,50 +37,35 @@ function ParkingPage({cities}) {
         }
         
     }
+
+    let whatToShow= "";
     if (typeof currentLatLng !== 'undefined'){
         console.log(currentLatLng);
-        return(            <iframe
-            width="800"
-            height="600"
-            style={{border:0}}
-            loading="lazy"
-            allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLatLng.lat},${currentLatLng.lng}&destination=${parkingLatLng.lat},${parkingLatLng.lng}&mode=walking`}
-            ></iframe>)
-
+        whatToShow = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLatLng.lat},${currentLatLng.lng}&destination=${parkingLatLng.lat},${parkingLatLng.lng}&mode=walking`;
     }
     else if ( typeof currentLocation !== 'undefined'){
         console.log(currentLocation);
-        return(            <iframe
-            width="800"
-            height="600"
-            style={{border:0}}
-            loading="lazy"
-            allowFullScreen
-            src={`https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLocation}&destination=${parkingLocation}&mode=walking`}
-            ></iframe>)
+        whatToShow = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLocation}&destination=${parkingLocation}&mode=walking`
+    }
+    else if (typeof parkingLatLng !=='undefined' ){
+        whatToShow =`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLatLng.lat},${parkingLatLng.lng}`;
+    }
+    else if(typeof parkingLocation !=='undefined'){
+        whatToShow=`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLocation}`;
     }
 
     return(<div>
-            <NavBarComp />    
-            {parkingLatLng ? <iframe
+            <NavBarComp /> 
+             <iframe
                 width="800"
                 height="600"
                 style={{border:0}}
                 loading="lazy"
                 allowFullScreen
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLatLng.lat},${parkingLatLng.lng}`}
+                src={whatToShow}
                 >
-            </iframe> : <div>Would you like to park ?</div>}
-            {parkingLocation ? <iframe
-                width="800"
-                height="600"
-                style={{border:0}}
-                loading="lazy"
-                allowFullScreen
-                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLocation}`}
-                >
-            </iframe> : <div>Would you like to park ?</div>}    
+            </iframe> : <div>Would you like to park ?</div>
+
             <div>
                 <button onClick={()=>onMainParkingButtonClick()}>{setParkingMainButtonText()}</button>
             </div>
