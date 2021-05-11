@@ -1,6 +1,7 @@
 
 import { HashRouter,  Route, Switch } from 'react-router-dom';
 import './App.css';
+import {  getCityList } from "./utils/HelperFunctions";
 
 import { AuthProvider } from "./utils/Auth";
 
@@ -27,6 +28,13 @@ function App() {
   
   const [userList , updateUsersList] = useState([[]]);
   const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel('itemName','brand Name' , 1)]);
+
+  const [cityNameArr ,setCityNameArr] = useState();
+
+  //This code will get city list from json file for 
+  if (typeof cityNameArr === 'undefined'){
+    getCityList(setCityNameArr);
+  }
 
   return (
     <AuthProvider id="p-app-container">
