@@ -1,10 +1,10 @@
 
 
-export const getCurrentLocation = (updateLatLng , updateShowParkingAddressModal)=>{
+export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddressModal)=>{
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
-        updateLatLng( { lat:latitude, lng:longitude} );
+        updateParkingLatLng( { lat:latitude, lng:longitude} );
     }
 
     function error() {
@@ -20,3 +20,4 @@ export const getCurrentLocation = (updateLatLng , updateShowParkingAddressModal)
 
 
 }
+
