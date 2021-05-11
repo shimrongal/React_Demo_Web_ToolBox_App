@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/login"  component={LoginPage}></Route>
           <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping-list"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
-          <Route exact path="/parking"      ><ParkingPage /> </Route>
+          <Route exact path="/parking"      ><ParkingPage citys={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>
       
