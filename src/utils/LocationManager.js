@@ -1,6 +1,6 @@
 
 
-export const getCurrentLocation = (updateLatLng)=>{
+export const getCurrentLocation = (updateLatLng , updateShowParkingAddressModal)=>{
     function success(position) {
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
@@ -9,6 +9,7 @@ export const getCurrentLocation = (updateLatLng)=>{
 
     function error() {
         alert('Unable to retrieve your location');
+        updateShowParkingAddressModal(true);
     }
     
     if(!navigator.geolocation) {

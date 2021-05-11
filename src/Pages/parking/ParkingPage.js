@@ -1,24 +1,42 @@
 import { useState } from "react";
+import ParkingAddressModal from "../../components/modals/ParkingAddressModal";
 import NavBarComp from "../../components/NavBarComp";
 import { getCurrentLocation } from "../../utils/LocationManager";
 
 
-function ParkingPage(params) {
+function ParkingPage({cities}) {
 
-    const [latLng, updateLatLng]= useState();
-  
+    const [latLng, updateLatLng]                                   = useState();
+    const [showParkingAddressModal ,updateShowParkingAddressModal] = useState(false);
+    const [location,updateLocation]                                = useState();
+    
+    if (showParkingAddressModal){
+        return <ParkingAddressModal show={showParkingAddressModal} onClose={()=>updateShowParkingAddressModal(false)} updateLocation={updateLocation} cities={cities}/>
+    }
+    console.log(location);
     return(<div>
             <NavBarComp />    
-            <button onClick={()=> getCurrentLocation(updateLatLng)}>Save Location</button>
-            {latLng ?             <iframe
-                width="600"
-                height="450"
+            {latLng ? <iframe
+                width="800"
+                height="650"
                 style={{border:0}}
                 loading="lazy"
                 allowFullScreen
                 src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${latLng.lat},${latLng.lng}`}
                 >
-            </iframe> : <div>No Location Found</div>}
+            </iframe> : <div>Would you like to park ?</div>}
+            {location ? <iframe
+                width="800"
+                height="650"
+                style={{border:0}}
+                loading="lazy"
+                allowFullScreen
+                src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${location}`}
+                >
+            </iframe> : <div>Would you like to park ?</div>}    
+
+            <button onClick={()=> getCurrentLocation(updateLatLng, updateShowParkingAddressModal)}>Save Location</button>
+
 
         </div> )
     }
