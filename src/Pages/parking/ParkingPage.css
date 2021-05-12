@@ -1,0 +1,8 @@
+
+
+.p-parking-page-button-container{
+    width: 20%;
+    margin: 10px 40%;
+    display: flex;
+    justify-content: space-around;
+}

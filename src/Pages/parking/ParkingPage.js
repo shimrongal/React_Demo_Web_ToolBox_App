@@ -1,17 +1,18 @@
+import './ParkingPage.css';
 import { useState } from "react";
 import ParkingAddressModal from "../../components/modals/ParkingAddressModal";
 import NavBarComp from "../../components/NavBarComp";
 import { getCurrentLocation  } from "../../utils/LocationManager";
 
-
 function ParkingPage({cities}) {
     const [parkingLocation,updateParkingLocation]                                = useState();
     const [currentLocation,updateCurrentLocation]                                = useState();
-
-    
     const [parkingLatLng, updateParkingLatLng]                     = useState();
     const [currentLatLng, updateCurrentLatLng]                     = useState();
     const [showParkingAddressModal ,updateShowParkingAddressModal] = useState(false);
+
+    const [showFindParking , setShowFindParking] = useState();
+
     if (showParkingAddressModal){
         if (typeof parkingLocation === 'undefined')
             return <ParkingAddressModal show={showParkingAddressModal} onClose={()=>updateShowParkingAddressModal(false)} updateLocation={updateParkingLocation} cities={cities}/>
@@ -38,6 +39,11 @@ function ParkingPage({cities}) {
         
     }
 
+    const onFindParkingButtonClick =() =>{
+        whatToShow=`https://www.google.com/maps/embed/v1/search?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&zoom=16&q=parking in הרצל 10 תל אביב`;
+        setShowFindParking(whatToShow);
+    }
+
     let whatToShow= "";
     if (typeof currentLatLng !== 'undefined'){
         console.log(currentLatLng);
@@ -54,26 +60,30 @@ function ParkingPage({cities}) {
         whatToShow=`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLocation}`;
     }
 
+    if (typeof showFindParking !=='undefined'){
+        whatToShow = showFindParking;
+    }
+
     return(<div>
             <NavBarComp /> 
+            {whatToShow !== "" ? 
              <iframe
                 width="800"
                 height="600"
                 style={{border:0}}
                 loading="lazy"
                 allowFullScreen
-                src={whatToShow}
-                >
-            </iframe> : <div>Would you like to park ?</div>
-
-            <div>
+                src={whatToShow}>
+            </iframe>
+            :
+            <div>Would you like to park ?</div>}
+            <div className="p-parking-page-button-container">
                 <button onClick={()=>onMainParkingButtonClick()}>{setParkingMainButtonText()}</button>
+                <button onClick={()=>onFindParkingButtonClick()}>Find parking lot</button>
             </div>
-
 
         </div> )
     }
-
 
 
 export default ParkingPage
