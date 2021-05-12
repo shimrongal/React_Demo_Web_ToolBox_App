@@ -1,57 +1,6 @@
 
 [
-    {
-        "city_symbol": "967",
-        "hebrew_name": "אבו ג'ווייעד"
-    },
-    {
-        "city_symbol": "472",
-        "hebrew_name": "אבו גוש"
-    },
-    {
-        "city_symbol": "473",
-        "hebrew_name": "אבו סנאן"
-    },
-    {
-        "city_symbol": "935",
-        "hebrew_name": "אבו סריחאן )שבט("
-    },
-    {
-        "city_symbol": "958",
-        "hebrew_name": "אבו עבדון )שבט("
-    },
-    {
-        "city_symbol": "1042",
-        "hebrew_name": "אבו עמאר )שבט("
-    },
-    {
-        "city_symbol": "932",
-        "hebrew_name": "אבו עמרה )שבט("
-    },
-    {
-        "city_symbol": "968",
-        "hebrew_name": "אבו קורינאת )שבט("
-    },
-    {
-        "city_symbol": "1342",
-        "hebrew_name": "אבו קרינאת )יישוב("
-    },
-    {
-        "city_symbol": "966",
-        "hebrew_name": "אבו רובייעה )שבט("
-    },
-    {
-        "city_symbol": "961",
-        "hebrew_name": "אבו רוקייק )שבט("
-    },
-    {
-        "city_symbol": "1375",
-        "hebrew_name": "אבו תלול"
-    },
-    {
-        "city_symbol": "652",
-        "hebrew_name": "אבטין"
-    },
+
     {
         "city_symbol": "1275",
         "hebrew_name": "אבטליון"
@@ -145,18 +94,6 @@
         "hebrew_name": "אוהד"
     },
     {
-        "city_symbol": "2710",
-        "hebrew_name": "אום אל-פחם"
-    },
-    {
-        "city_symbol": "2024",
-        "hebrew_name": "אום אל-קוטוף"
-    },
-    {
-        "city_symbol": "1358",
-        "hebrew_name": "אום בטין"
-    },
-    {
         "city_symbol": "1108",
         "hebrew_name": "אומן"
     },
@@ -209,20 +146,12 @@
         "hebrew_name": "אורנית"
     },
     {
-        "city_symbol": "278",
-        "hebrew_name": "אושה"
-    },
-    {
         "city_symbol": "565",
         "hebrew_name": "אזור"
     },
     {
         "city_symbol": "1157",
         "hebrew_name": "אחווה"
-    },
-    {
-        "city_symbol": "821",
-        "hebrew_name": "אחוזם"
     },
     {
         "city_symbol": "1330",
@@ -243,10 +172,6 @@
     {
         "city_symbol": "797",
         "hebrew_name": "אחיעזר"
-    },
-    {
-        "city_symbol": "965",
-        "hebrew_name": "אטרש )שבט("
     },
     {
         "city_symbol": "338",
@@ -291,22 +216,6 @@
     {
         "city_symbol": "886",
         "hebrew_name": "איתנים"
-    },
-    {
-        "city_symbol": "478",
-        "hebrew_name": "אכסאל"
-    },
-    {
-        "city_symbol": "1359",
-        "hebrew_name": "אל סייד"
-    },
-    {
-        "city_symbol": "1339",
-        "hebrew_name": "אל-עזי"
-    },
-    {
-        "city_symbol": "1316",
-        "hebrew_name": "אל-עריאן"
     },
     {
         "city_symbol": "4003",
@@ -429,26 +338,6 @@
         "hebrew_name": "אניעם"
     },
     {
-        "city_symbol": "960",
-        "hebrew_name": "אסד )שבט("
-    },
-    {
-        "city_symbol": "3754",
-        "hebrew_name": "אספר"
-    },
-    {
-        "city_symbol": "529",
-        "hebrew_name": "אעבלין"
-    },
-    {
-        "city_symbol": "963",
-        "hebrew_name": "אעצם )שבט("
-    },
-    {
-        "city_symbol": "959",
-        "hebrew_name": "אפיניש )שבט("
-    },
-    {
         "city_symbol": "4301",
         "hebrew_name": "אפיק"
     },
@@ -537,10 +426,6 @@
         "hebrew_name": "אתגר"
     },
     {
-        "city_symbol": "6000",
-        "hebrew_name": "באקה אל-גרביה"
-    },
-    {
         "city_symbol": "21",
         "hebrew_name": "באר אורה"
     },
@@ -576,37 +461,14 @@
         "city_symbol": "399",
         "hebrew_name": "בארי"
     },
-    {
-        "city_symbol": "559",
-        "hebrew_name": "בוסתן הגליל"
-    },
-    {
-        "city_symbol": "482",
-        "hebrew_name": "בועיינה-נוג'ידאת"
-    },
-    {
-        "city_symbol": "4001",
-        "hebrew_name": "בוקעאתא"
-    },
-    {
-        "city_symbol": "698",
-        "hebrew_name": "בורגתה"
-    },
+
     {
         "city_symbol": "2043",
         "hebrew_name": "בחן"
     },
     {
-        "city_symbol": "762",
-        "hebrew_name": "בטחה"
-    },
-    {
         "city_symbol": "234",
         "hebrew_name": "ביצרון"
-    },
-    {
-        "city_symbol": "998",
-        "hebrew_name": "ביר אל-מכסור"
     },
     {
         "city_symbol": "1348",
@@ -640,14 +502,7 @@
         "city_symbol": "1076",
         "hebrew_name": "בית ברל"
     },
-    {
-        "city_symbol": "480",
-        "hebrew_name": "בית ג'ן"
-    },
-    {
-        "city_symbol": "619",
-        "hebrew_name": "בית גוברין"
-    },
+
     {
         "city_symbol": "571",
         "hebrew_name": "בית גמליאל"
@@ -679,10 +534,6 @@
     {
         "city_symbol": "242",
         "hebrew_name": "בית השיטה"
-    },
-    {
-        "city_symbol": "353",
-        "hebrew_name": "בית זיד"
     },
     {
         "city_symbol": "710",
@@ -763,10 +614,6 @@
     {
         "city_symbol": "756",
         "hebrew_name": "בית עזרא"
-    },
-    {
-        "city_symbol": "604",
-        "hebrew_name": "בית עריף"
     },
     {
         "city_symbol": "212",
@@ -933,10 +780,6 @@
         "hebrew_name": "ברכה"
     },
     {
-        "city_symbol": "746",
-        "hebrew_name": "ברכיה"
-    },
-    {
         "city_symbol": "667",
         "hebrew_name": "ברעם"
     },
@@ -983,34 +826,6 @@
     {
         "city_symbol": "33",
         "hebrew_name": "בת שלמה"
-    },
-    {
-        "city_symbol": "1292",
-        "hebrew_name": "ג'דיידה-מכר"
-    },
-    {
-        "city_symbol": "485",
-        "hebrew_name": "ג'ולס"
-    },
-    {
-        "city_symbol": "627",
-        "hebrew_name": "ג'לג'וליה"
-    },
-    {
-        "city_symbol": "976",
-        "hebrew_name": "ג'נאביב )שבט("
-    },
-    {
-        "city_symbol": "541",
-        "hebrew_name": "ג'סר א-זרקא"
-    },
-    {
-        "city_symbol": "487",
-        "hebrew_name": "ג'ש )גוש חלב("
-    },
-    {
-        "city_symbol": "628",
-        "hebrew_name": "ג'ת"
     },
     {
         "city_symbol": "872",
@@ -1341,16 +1156,8 @@
         "hebrew_name": "גת רימון"
     },
     {
-        "city_symbol": "494",
-        "hebrew_name": "דאלית אל-כרמל"
-    },
-    {
         "city_symbol": "146",
         "hebrew_name": "דבורה"
-    },
-    {
-        "city_symbol": "489",
-        "hebrew_name": "דבוריה"
     },
     {
         "city_symbol": "849",
@@ -1385,22 +1192,6 @@
         "hebrew_name": "דורות"
     },
     {
-        "city_symbol": "475",
-        "hebrew_name": "דחי"
-    },
-    {
-        "city_symbol": "490",
-        "hebrew_name": "דייר אל-אסד"
-    },
-    {
-        "city_symbol": "492",
-        "hebrew_name": "דייר חנא"
-    },
-    {
-        "city_symbol": "493",
-        "hebrew_name": "דייר ראפאת"
-    },
-    {
         "city_symbol": "2200",
         "hebrew_name": "דימונה"
     },
@@ -1417,10 +1208,6 @@
         "hebrew_name": "דלתון"
     },
     {
-        "city_symbol": "1317",
-        "hebrew_name": "דמיידה"
-    },
-    {
         "city_symbol": "303",
         "hebrew_name": "דן"
     },
@@ -1431,10 +1218,6 @@
     {
         "city_symbol": "1241",
         "hebrew_name": "דקל"
-    },
-    {
-        "city_symbol": "1349",
-        "hebrew_name": "דריג'את"
     },
     {
         "city_symbol": "702",
@@ -1463,14 +1246,6 @@
     {
         "city_symbol": "1322",
         "hebrew_name": "הודיות"
-    },
-    {
-        "city_symbol": "1169",
-        "hebrew_name": "הוואשלה )שבט("
-    },
-    {
-        "city_symbol": "956",
-        "hebrew_name": "הוזייל )שבט("
     },
     {
         "city_symbol": "1186",
@@ -1517,10 +1292,6 @@
         "hebrew_name": "הר גילה"
     },
     {
-        "city_symbol": "1261",
-        "hebrew_name": "הר עמשא"
-    },
-    {
         "city_symbol": "464",
         "hebrew_name": "הראל"
     },
@@ -1543,14 +1314,6 @@
     {
         "city_symbol": "1133",
         "hebrew_name": "ורדון"
-    },
-    {
-        "city_symbol": "2742",
-        "hebrew_name": "זבארגה )שבט("
-    },
-    {
-        "city_symbol": "815",
-        "hebrew_name": "זבדיאל"
     },
     {
         "city_symbol": "44",
@@ -1589,22 +1352,6 @@
         "hebrew_name": "זרועה"
     },
     {
-        "city_symbol": "975",
-        "hebrew_name": "זרזיר"
-    },
-    {
-        "city_symbol": "818",
-        "hebrew_name": "זרחיה"
-    },
-    {
-        "city_symbol": "1321",
-        "hebrew_name": "ח'ואלד"
-    },
-    {
-        "city_symbol": "986",
-        "hebrew_name": "ח'ואלד )שבט("
-    },
-    {
         "city_symbol": "235",
         "hebrew_name": "חבצלת השרון"
     },
@@ -1633,16 +1380,8 @@
         "hebrew_name": "חד-נס"
     },
     {
-        "city_symbol": "618",
-        "hebrew_name": "חדיד"
-    },
-    {
         "city_symbol": "6500",
         "hebrew_name": "חדרה"
-    },
-    {
-        "city_symbol": "948",
-        "hebrew_name": "חוג'ייראת )ד'הרה("
     },
     {
         "city_symbol": "160",
@@ -1661,28 +1400,12 @@
         "hebrew_name": "חולתה"
     },
     {
-        "city_symbol": "662",
-        "hebrew_name": "חוסן"
-    },
-    {
-        "city_symbol": "1332",
-        "hebrew_name": "חוסנייה"
-    },
-    {
         "city_symbol": "115",
         "hebrew_name": "חופית"
     },
     {
         "city_symbol": "374",
         "hebrew_name": "חוקוק"
-    },
-    {
-        "city_symbol": "1303",
-        "hebrew_name": "חורה"
-    },
-    {
-        "city_symbol": "496",
-        "hebrew_name": "חורפיש"
     },
     {
         "city_symbol": "355",
@@ -1715,10 +1438,6 @@
     {
         "city_symbol": "820",
         "hebrew_name": "חלץ"
-    },
-    {
-        "city_symbol": "993",
-        "hebrew_name": "חמאם"
     },
     {
         "city_symbol": "801",
@@ -1823,26 +1542,6 @@
     {
         "city_symbol": "6700",
         "hebrew_name": "טבריה"
-    },
-    {
-        "city_symbol": "962",
-        "hebrew_name": "טובא-זנגריה"
-    },
-    {
-        "city_symbol": "498",
-        "hebrew_name": "טורעאן"
-    },
-    {
-        "city_symbol": "2730",
-        "hebrew_name": "טייבה"
-    },
-    {
-        "city_symbol": "497",
-        "hebrew_name": "טייבה )בעמק("
-    },
-    {
-        "city_symbol": "2720",
-        "hebrew_name": "טירה"
     },
     {
         "city_symbol": "663",
@@ -4990,7 +4689,7 @@
     },
     {
         "city_symbol": "5000",
-        "hebrew_name": "תל אביב - יפו"
+        "hebrew_name": "תל אביב "
     },
     {
         "city_symbol": "84",

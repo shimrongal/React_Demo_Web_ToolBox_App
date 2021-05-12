@@ -5,83 +5,78 @@ import NavBarComp from "../../components/NavBarComp";
 import { getCurrentLocation  } from "../../utils/LocationManager";
 
 function ParkingPage({cities}) {
-    const [parkingLocation,updateParkingLocation]                                = useState();
-    const [currentLocation,updateCurrentLocation]                                = useState();
-    const [parkingLatLng, updateParkingLatLng]                     = useState();
-    const [currentLatLng, updateCurrentLatLng]                     = useState();
+
+    const [whatToShow,setWhatToShow] = useState("");
+    const [mapUrl,setMapUrl] = useState("");
+
+    const [mainBtnText, setMainBtnText] = useState("Save Parking");
     const [showParkingAddressModal ,updateShowParkingAddressModal] = useState(false);
 
-    const [showFindParking , setShowFindParking] = useState();
 
-    if (showParkingAddressModal){
-        if (typeof parkingLocation === 'undefined')
-            return <ParkingAddressModal show={showParkingAddressModal} onClose={()=>updateShowParkingAddressModal(false)} updateLocation={updateParkingLocation} cities={cities}/>
-        else 
-            return <ParkingAddressModal show={showParkingAddressModal} onClose={()=>updateShowParkingAddressModal(false)} updateLocation={updateCurrentLocation} cities={cities}/>
-        }
+    const [parkingLocation,updateParkingLocation]                                = useState();
+    const [currentLocation,updateCurrentLocation]                                = useState();
 
-    const setParkingMainButtonText = ()=>{
-        if (typeof parkingLatLng === 'undefined' && typeof parkingLocation === 'undefined'){
-            return "Save Parking";
-        }
-        else {
-            return "Find My Car";
-        }
-    }
+    const [parkingLatLng, updateParkingLatLng]                     = useState();
+    const [currentLatLng, updateCurrentLatLng]                     = useState();
 
+    /**
+     * Main button have 2 functions:
+     *  1. Get Current parking location 
+     *  2. Get current location to use in "direction" Mode for directions back to the car.
+     * 
+     * */
     const onMainParkingButtonClick = ()=> {
         if (typeof parkingLatLng === 'undefined' && typeof parkingLocation === 'undefined'){
-            getCurrentLocation(updateParkingLatLng, updateShowParkingAddressModal)
+            getCurrentLocation(updateParkingLatLng, updateShowParkingAddressModal , "parkingLocation",setMapUrl,setWhatToShow, parkingLatLng, setMainBtnText);
         }
         else {
-            getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal);
-        }
-        
+            getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal, "currentLocation",setMapUrl,setWhatToShow  , parkingLatLng);
+        }      
     }
 
     const onFindParkingButtonClick =() =>{
-        whatToShow=`https://www.google.com/maps/embed/v1/search?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&zoom=16&q=parking in הרצל 10 תל אביב`;
-        setShowFindParking(whatToShow);
+        setMainBtnText("Save Parking");
+        updateParkingLocation();
+        updateParkingLatLng()
+        getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal , "findParkingLot" , setMapUrl,setWhatToShow , parkingLatLng );
     }
 
-    let whatToShow= "";
-    if (typeof currentLatLng !== 'undefined'){
-        console.log(currentLatLng);
-        whatToShow = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLatLng.lat},${currentLatLng.lng}&destination=${parkingLatLng.lat},${parkingLatLng.lng}&mode=walking`;
-    }
-    else if ( typeof currentLocation !== 'undefined'){
-        console.log(currentLocation);
-        whatToShow = `https://www.google.com/maps/embed/v1/directions?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&origin=${currentLocation}&destination=${parkingLocation}&mode=walking`
-    }
-    else if (typeof parkingLatLng !=='undefined' ){
-        whatToShow =`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLatLng.lat},${parkingLatLng.lng}`;
-    }
-    else if(typeof parkingLocation !=='undefined'){
-        whatToShow=`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${parkingLocation}`;
-    }
+    console.log("map url is : "+ mapUrl);
 
-    if (typeof showFindParking !=='undefined'){
-        whatToShow = showFindParking;
-    }
-
-    return(<div>
+    return(<div id="p-parking-page-container">
             <NavBarComp /> 
-            {whatToShow !== "" ? 
+            {mapUrl !== "" ? 
              <iframe
                 width="800"
                 height="600"
                 style={{border:0}}
                 loading="lazy"
                 allowFullScreen
-                src={whatToShow}>
+                src={mapUrl}>
             </iframe>
             :
-            <div>Would you like to park ?</div>}
+            <div className="title-container">
+                <h1 className="cyber-text">Would you like to park ?</h1>
+                <img src="./park_icon.png"  alt="parking_lot"/>
+            </div>}            
             <div className="p-parking-page-button-container">
-                <button onClick={()=>onMainParkingButtonClick()}>{setParkingMainButtonText()}</button>
+                <button onClick={()=>onMainParkingButtonClick()}>{mainBtnText}</button>
                 <button onClick={()=>onFindParkingButtonClick()}>Find parking lot</button>
             </div>
-
+            {showParkingAddressModal ? 
+            <ParkingAddressModal show={showParkingAddressModal}
+                                 onClose={()=>  updateShowParkingAddressModal(false)}
+                                 whatToShow={whatToShow}
+                                 setMapUrl= {setMapUrl}
+                                 cities={cities}
+                                 parkingLocation={parkingLocation}
+                                 mainBtnText={mainBtnText}
+                                 setMainBtnText={setMainBtnText}
+                                 updateParkingLocation={updateParkingLocation}
+/>
+            :
+            <></>
+            }
         </div> )
     }
 

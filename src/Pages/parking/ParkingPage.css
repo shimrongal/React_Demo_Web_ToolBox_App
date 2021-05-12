@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 
 .p-parking-page-button-container{
     width: 20%;
@@ -6,3 +6,35 @@
     display: flex;
     justify-content: space-around;
 }
+
+.title-container{
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#p-parking-page-container .title-container > h1::before{
+    content: "*";
+    margin-right: 15px;
+    color: mediumvioletred;
+    max-width: 100%;
+    max-height: 100%;
+}
+#p-parking-page-container .title-container > h1{
+    color: mediumvioletred;
+    margin-top: 15px;
+    max-width: 100%;
+    max-height: 100%;
+    font-family: 'Itim', cursive;
+}
+
+#p-parking-page-container .title-container > img{
+    color: mediumvioletred;
+    margin-top: 15px;
+    margin-left: 15px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+  
