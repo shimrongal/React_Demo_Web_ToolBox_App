@@ -1,2 +1,24 @@
 /*Created by Gal Shimron on 9/05/2021. */
 
+/**
+* Create a Table only with css using flex box 
+*
+**/
+.shopping-item-row{
+    margin: 20px 50px;
+    display: flex;
+    justify-content: center;
+    border: double 5px black;
+}
+
+.shopping-item-row > div{
+    margin: 10px;
+    flex: 1;
+}
+
+/* End of table */
+
+
+#shopping-item-header{
+    margin-top: 10px;
+}
