@@ -1,8 +1,4 @@
-import Geocode from "react-geocode";
-
-Geocode.setApiKey("AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI");
-// Enable or disable logs. Its optional.
-Geocode.enableDebug();
+import axios from "axios";
 
 
 export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddressModal, tempWhatToShow, setMapUrl ,setWhatToShow, parkingLatLng , setMainBtnText)=>{
@@ -19,19 +15,11 @@ export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddres
         }
         else if (tempWhatToShow === "findParkingLot"){
             // Get address from latitude & longitude.
-            Geocode.fromLatLng(latitude, longitude).then(
-            (response) => {
-                const address = response.results[0].formatted_address.replace(",","");
-                setMapUrl(`https://www.google.com/maps/embed/v1/search?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&zoom=16&center=${latitude},${longitude}&q=parking near ${address}`);
-            },
-            (error) => {
-                console.error(error);
-            }
-            );
-
-
-
-
+            axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI`).then((results)=>{
+                setMapUrl(`https://www.google.com/maps/embed/v1/search?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&zoom=16&center=${results.data.results[0].geometry.location.lat},${results.data.results[0].geometry.location.lng}&q=parking near ${results.data.results[0].formatted_address}`);
+            }).catch((error)=>{
+                console.log("error https://maps.googleapis.com/maps/api/geocode/json?address= : "+error);
+            });
         }
     }
 
