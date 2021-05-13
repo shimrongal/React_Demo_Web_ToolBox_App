@@ -7,12 +7,12 @@ import { AuthProvider } from "./utils/Auth";
 
 import Home from "./pages/home/Home";
 import LoginPage from './pages/login/LoginPage';
-import ShoppingPage from './pages/shopping_list/ShoppingPage'
 import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from 'react';
 import ShoppingItemModel from './models/ShoppingItemModel';
 import ParkingPage from './pages/parking/ParkingPage';
+import ShoppingPage from './pages/shopping_list/ShoppingPage';
 
 
 /**
@@ -45,7 +45,7 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login"  component={LoginPage}></Route>
           <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping-list"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
+          <Route exact path="/shopping_list"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
           <Route exact path="/parking"      ><ParkingPage cities={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>

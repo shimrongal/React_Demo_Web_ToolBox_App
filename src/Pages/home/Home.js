@@ -17,7 +17,7 @@ const Home = ({history}) => {
   const {currentUser} = useContext(AuthContext);
 
   if (typeof currentUser ==='undefined') {
-    return <Redirect to="/shopping-list" />;
+    return <Redirect to="/shopping_list" />;
   }
   return (
     <div className="navbar-container">
