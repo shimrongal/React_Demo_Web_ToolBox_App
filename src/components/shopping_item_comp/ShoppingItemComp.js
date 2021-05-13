@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { saveCheckBoxState } from "../../utils/HelperFunctions";
 import "./ShoppingItemComp.css";
 /**
  * Created by Gal Shimron on 10/05/2021.
@@ -9,6 +10,12 @@ import "./ShoppingItemComp.css";
 function ShoppingItemComp({item}) {
 
    const [isChecked, setChecked] = useState(false);
+
+   const handleCheckBoxChange =()=>{
+        console.log("handleCheckBoxChange");
+        saveCheckBoxState(item.itemName , item.itemBrand, !isChecked)
+        setChecked(!isChecked)
+   }
 
     return(<div className="shopping-item-row">
                 <div className="shopping-item-col">
@@ -22,7 +29,7 @@ function ShoppingItemComp({item}) {
                 </div>
                 <div className="shopping-item-col">
                     <div className="shopping-item-checkbox-container">
-                        <input className="shopping-item-checkbox"  type="checkbox" value={isChecked} onChange={()=>setChecked(!isChecked)} />  
+                        <input className="shopping-item-checkbox"  type="checkbox" value={isChecked} onChange={()=> handleCheckBoxChange()} />  
                     </div> 
                 </div>
         

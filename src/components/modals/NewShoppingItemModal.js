@@ -2,6 +2,7 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
 import { Col, Form ,Button, Modal } from "react-bootstrap";
 import ShoppingItemModel from "../../models/ShoppingItemModel";
+import { addShoppingItemToFireStore } from "../../utils/HelperFunctions";
 
 function NewShoppingItemModal({show, onClose, currentShoppingList, updateShoppingList}) {
     const [itemName,setItemName]         = useState("");
@@ -16,7 +17,9 @@ function NewShoppingItemModal({show, onClose, currentShoppingList, updateShoppin
     }
 
     const newItemCreated = ()=>{
-        updateShoppingList(currentShoppingList.concat(new ShoppingItemModel(itemName, itemBrand, itemQuantity)))
+        const newShoppingItem = new ShoppingItemModel(itemName, itemBrand, itemQuantity);
+        addShoppingItemToFireStore(newShoppingItem);
+        updateShoppingList(currentShoppingList.concat(newShoppingItem))
         clearInputs();
         onClose();
     }

@@ -7,7 +7,10 @@ import firebase from "../utils/FirebaseConfig";
 let fireStoreDb = firebase.firestore();
 
 
-
+/**
+ * Return List of israeli cities from json file - this is mostly for demonstrate reading from json file 
+ * @param {*} setCityNameArr 
+ */
 export const getCityList =(setCityNameArr)=>{
     axios.get('israel_city_list.json').then(response=>{
         setCityNameArr(response.data.map((item)=>{
@@ -16,6 +19,10 @@ export const getCityList =(setCityNameArr)=>{
     })
 }
 
+/**
+ * Return shopping list from Firestore db
+ * @param {*} updateShoppingList 
+ */
 export const getShoppingList= (updateShoppingList)=>{
     const tempShoppingItems = [];
     fireStoreDb.collection("shopping-list").get().then( 
@@ -29,11 +36,30 @@ export const getShoppingList= (updateShoppingList)=>{
     });
 }
 
+/**
+ * Will create entry in Firestore db with ID
+ *  The ID Scheme is : name + brand-name 
+ * @param {*} shoppingItem 
+ */
+export const addShoppingItemToFireStore = (shoppingItem)=>{
+    fireStoreDb.collection("shopping-list").doc(shoppingItem.itemName + "_" + shoppingItem.itemBrand).set({
+        itemName: shoppingItem.itemName,
+        itemBrand: shoppingItem.itemBrand,
+        itemQuantity: shoppingItem.itemQuantity,
+        inCart:false
+    });
+}
+
+
+/**
+ * Will create entry in Firestore db with random id
+ * @param {*} shoppingItem 
+ */
 export const saveShoppingItem= (shoppingItem)=>{
     fireStoreDb.collection("shopping-list").add({
-        itemName: "Chips",
-        itemBrand: "Pringels",
-        itemQuantity: 5,
+        itemName: shoppingItem.itemName,
+        itemBrand: shoppingItem.itemBrand,
+        itemQuantity: shoppingItem.itemQuantity,
         inCart:false
     })
     .then((docRef) => {
@@ -42,5 +68,14 @@ export const saveShoppingItem= (shoppingItem)=>{
     })
     .catch((error) => {
         console.error("Error adding document: ", error);
+    });
+}
+
+export const saveCheckBoxState= ( name , brand,   checkBoxStatus)=>{
+    fireStoreDb.collection("shopping-list").doc("add_itm").update({
+        "inCart" : checkBoxStatus
+    })
+    .catch((error) => {
+        console.error("Error updating document: ", error);
     });
 }
