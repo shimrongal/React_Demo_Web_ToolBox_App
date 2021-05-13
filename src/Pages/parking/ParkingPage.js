@@ -41,8 +41,6 @@ function ParkingPage({cities}) {
         getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal , "findParkingLot" , setMapUrl,setWhatToShow , parkingLatLng );
     }
 
-    console.log("map url is : "+ mapUrl);
-
     return(<div id="p-parking-page-container">
             <NavBarComp /> 
             {mapUrl !== "" ? 
