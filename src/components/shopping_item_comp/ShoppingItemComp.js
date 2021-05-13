@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { saveCheckBoxState } from "../../utils/HelperFunctions";
 import "./ShoppingItemComp.css";
 /**
@@ -7,15 +7,15 @@ import "./ShoppingItemComp.css";
  * ShoppingItemComp class 
  */
 
-function ShoppingItemComp({item}) {
+function ShoppingItemComp({item , isChecked}) {
 
-   const [isChecked, setChecked] = useState(false);
+    //TODO: Figure out best practice 
+    const [isCheckedItem , updateCheckItem] = useState(isChecked);
 
-   const handleCheckBoxChange =()=>{
-        console.log("handleCheckBoxChange");
-        saveCheckBoxState(item.itemName , item.itemBrand, !isChecked)
-        setChecked(!isChecked)
-   }
+    const handleCheckBoxChange =()=>{
+            saveCheckBoxState(item.itemName , item.itemBrand, !isCheckedItem)
+            updateCheckItem(!isCheckedItem)   
+        }
 
     return(<div className="shopping-item-row">
                 <div className="shopping-item-col">
@@ -29,7 +29,7 @@ function ShoppingItemComp({item}) {
                 </div>
                 <div className="shopping-item-col">
                     <div className="shopping-item-checkbox-container">
-                        <input className="shopping-item-checkbox"  type="checkbox" value={isChecked} onChange={()=> handleCheckBoxChange()} />  
+                        <input className="shopping-item-checkbox"  type="checkbox" checked={isCheckedItem} onChange={()=>handleCheckBoxChange()} />  
                     </div> 
                 </div>
         

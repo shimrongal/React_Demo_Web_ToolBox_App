@@ -72,7 +72,7 @@ export const saveShoppingItem= (shoppingItem)=>{
 }
 
 export const saveCheckBoxState= ( name , brand,   checkBoxStatus)=>{
-    fireStoreDb.collection("shopping-list").doc("add_itm").update({
+    fireStoreDb.collection("shopping-list").doc(name + "_" + brand).update({
         "inCart" : checkBoxStatus
     })
     .catch((error) => {

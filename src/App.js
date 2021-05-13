@@ -27,15 +27,11 @@ import ShoppingPage from './pages/shopping_list/ShoppingPage';
 function App() {
   
   const [userList , updateUsersList] = useState([[]]);
-  const [shoppingList , updateShoppingList] = useState([new ShoppingItemModel('itemName','brand Name' , 1)]);
-
   const [cityNameArr ,setCityNameArr] = useState();
-
 
 
   useEffect(()=>{
     getCityList(setCityNameArr); 
-    getShoppingList(updateShoppingList)
   },[]);
 
   return (
@@ -45,7 +41,8 @@ function App() {
           <PrivateRoute exact path="/" component={Home} />
           <Route exact path="/login"  component={LoginPage}></Route>
           <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_list"><ShoppingPage shoppingList={shoppingList} updateShoppingList={updateShoppingList}    /> </Route>
+          <Route exact path="/shopping_list"><ShoppingPage    /> </Route>
+
           <Route exact path="/parking"      ><ParkingPage cities={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>
