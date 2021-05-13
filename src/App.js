@@ -1,7 +1,7 @@
 
 import { HashRouter,  Route, Switch } from 'react-router-dom';
 import './App.css';
-import {  getCityList } from "./utils/HelperFunctions";
+import {  getCityList, getShoppingList } from "./utils/HelperFunctions";
 
 import { AuthProvider } from "./utils/Auth";
 
@@ -10,7 +10,7 @@ import LoginPage from './pages/login/LoginPage';
 import ShoppingPage from './pages/shopping_list/ShoppingPage'
 import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ShoppingItemModel from './models/ShoppingItemModel';
 import ParkingPage from './pages/parking/ParkingPage';
 
@@ -31,9 +31,14 @@ function App() {
 
   const [cityNameArr ,setCityNameArr] = useState();
 
+  useEffect(()=>{
+    getCityList(setCityNameArr); 
+
+  },[]);
+
   //This code will get city list from json file for 
   if (typeof cityNameArr === 'undefined'){
-    getCityList(setCityNameArr);
+    
   }
 
   return (

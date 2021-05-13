@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarComp from '../../components/NavBarComp';
-import ShoppingItemComp from '../../components/ShoppingItemComp';
+import ShoppingItemComp from '../../components/shopping_item_comp/ShoppingItemComp';
 import { useState } from 'react';
 import NewShoppingItemModal from '../../components/modals/NewShoppingItemModal';
 
