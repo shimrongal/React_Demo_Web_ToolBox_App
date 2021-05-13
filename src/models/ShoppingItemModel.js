@@ -9,11 +9,12 @@
 
 class ShoppingItemModel{
 
-    constructor(itemName, itemBrand, itemQuantity){
+    constructor(itemName, itemBrand, itemQuantity ,inCart=false){
         this.itemId = itemName+"_"+itemBrand;
         this.itemName = itemName;
         this.itemBrand = itemBrand;
         this.itemQuantity = itemQuantity;
+        this.inCart = inCart;
     }
 
 }

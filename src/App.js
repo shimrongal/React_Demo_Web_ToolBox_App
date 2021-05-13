@@ -31,15 +31,12 @@ function App() {
 
   const [cityNameArr ,setCityNameArr] = useState();
 
+
+
   useEffect(()=>{
     getCityList(setCityNameArr); 
-
+    getShoppingList(updateShoppingList)
   },[]);
-
-  //This code will get city list from json file for 
-  if (typeof cityNameArr === 'undefined'){
-    
-  }
 
   return (
     <AuthProvider id="p-app-container">
