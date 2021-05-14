@@ -1,19 +1,18 @@
 
 import { HashRouter,  Route, Switch } from 'react-router-dom';
 import './App.css';
-import {  getCityList, getShoppingList } from "./utils/HelperFunctions";
+import {  getCityList } from "./utils/HelperFunctions";
 
 import { AuthProvider } from "./utils/Auth";
 
-import Home from "./pages/home/Home";
+import HomePage from "./pages/home/HomePage";
 import LoginPage from './pages/login/LoginPage';
 import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from 'react';
-import ShoppingItemModel from './models/ShoppingItemModel';
 import ParkingPage from './pages/parking/ParkingPage';
 import ShoppingPage from './pages/shopping_list/ShoppingPage';
-
+import { getCurrentWeatherByCityName } from './utils/WeatherManager';
 
 /**
  * Created by Gal Shimron on 9/05/2021.
@@ -23,27 +22,26 @@ import ShoppingPage from './pages/shopping_list/ShoppingPage';
  *    
  */
 
-
 function App() {
   
   const [userList , updateUsersList] = useState([[]]);
   const [cityNameArr ,setCityNameArr] = useState();
-
+  const [currentWeatherObject , setCurrentWeatherObject] = useState();
 
   useEffect(()=>{
     getCityList(setCityNameArr); 
+    getCurrentWeatherByCityName(setCurrentWeatherObject);
   },[]);
 
   return (
     <AuthProvider id="p-app-container">
       <HashRouter>
         <Switch>      
-          <PrivateRoute exact path="/" component={Home} />
-          <Route exact path="/login"  component={LoginPage}></Route>
-          <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_list"><ShoppingPage    /> </Route>
-
-          <Route exact path="/parking"      ><ParkingPage cities={cityNameArr}/> </Route>
+          <PrivateRoute exact path="/" >      <HomePage weatherObject= {currentWeatherObject} /> </PrivateRoute>
+          <Route exact path="/login" >        <LoginPage /> </Route>
+          <Route exact path="/signup" >       <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
+          <Route exact path="/shopping_list"> <ShoppingPage    /> </Route>
+          <Route exact path="/parking" >      <ParkingPage cities={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>
       
