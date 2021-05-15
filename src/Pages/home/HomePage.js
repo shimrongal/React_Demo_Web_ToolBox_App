@@ -1,10 +1,7 @@
 import './HomePage.css';
-import  app   from "../../utils/FirebaseConfig";
 import { AuthContext } from "../../utils/Auth";
 import { Redirect } from 'react-router';
 import { useContext } from 'react';
-import { Button } from 'react-bootstrap';
-import NavBarComp from '../../components/NavBarComp';
 import WeatherComp from '../../components/WeatherComp';
 
 /**
@@ -14,17 +11,17 @@ import WeatherComp from '../../components/WeatherComp';
  * @param {*} param0 
  */
 
-const HomePage = ({history , weatherObject}) => {
+const HomePage = ({weatherObject}) => {
+  
   const {currentUser} = useContext(AuthContext);
 
-  if (typeof currentUser ==='undefined') {
-    return <Redirect to="/shopping_list" />;
+  if (typeof currentUser ==='undefined' || currentUser === null) {
+    alert("Please Log in or Sign up first");
+    return <Redirect to="/login" />;
   }
   return (
     <div >
-      <NavBarComp />
       {typeof weatherObject !== 'undefined' ? <WeatherComp weatherObject={weatherObject} /> : <div>No Weather Data yet </div> }
-      <Button onClick={() => app.auth().signOut()}>Sign out</Button>
     </div>
   );
 };

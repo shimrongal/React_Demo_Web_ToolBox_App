@@ -1,8 +1,10 @@
 import './ParkingPage.css';
 import { useState } from "react";
 import ParkingAddressModal from "../../components/modals/ParkingAddressModal";
-import NavBarComp from "../../components/NavBarComp";
 import { getCurrentLocation  } from "../../utils/LocationManager";
+import { AuthContext } from '../../utils/Auth';
+import { useContext } from 'react';
+import { Redirect } from 'react-router';
 
 function ParkingPage({cities}) {
 
@@ -12,9 +14,8 @@ function ParkingPage({cities}) {
     const [mainBtnText, setMainBtnText] = useState("Save Parking");
     const [showParkingAddressModal ,updateShowParkingAddressModal] = useState(false);
 
-
-    const [parkingLocation,updateParkingLocation]                                = useState();
-    const [currentLocation,updateCurrentLocation]                                = useState();
+    const [parkingLocation,updateParkingLocation]                  = useState();
+    const [currentLocation,updateCurrentLocation]                  = useState();
 
     const [parkingLatLng, updateParkingLatLng]                     = useState();
     const [currentLatLng, updateCurrentLatLng]                     = useState();
@@ -40,9 +41,15 @@ function ParkingPage({cities}) {
         updateParkingLatLng()
         getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal , "findParkingLot" , setMapUrl,setWhatToShow , parkingLatLng );
     }
+    
+    const {currentUser} = useContext(AuthContext);
 
+    if (typeof currentUser ==='undefined' || currentUser ===null) {
+       alert("Please Log in or Sign up first");
+
+      return <Redirect to="/login" />;
+    }
     return(<div id="p-parking-page-container">
-            <NavBarComp /> 
             {mapUrl !== "" ? 
              <iframe
                 width="800"
@@ -70,8 +77,7 @@ function ParkingPage({cities}) {
                                  parkingLocation={parkingLocation}
                                  mainBtnText={mainBtnText}
                                  setMainBtnText={setMainBtnText}
-                                 updateParkingLocation={updateParkingLocation}
-/>
+                                 updateParkingLocation={updateParkingLocation}/>
             :
             <></>
             }

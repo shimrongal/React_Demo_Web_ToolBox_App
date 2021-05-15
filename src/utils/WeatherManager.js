@@ -18,3 +18,14 @@ export const getCurrentWeatherByCityName = (setCurrentWeatherObject)=>{
     }
     navigator.geolocation.getCurrentPosition(success, error);    
 }
+
+
+export const getMOCKCurrentWeatherByCityName = (setCurrentWeatherObject)=>{
+    axios.get('mock_open_weather_api.json').then( res =>{
+        setCurrentWeatherObject(res.data);
+
+    }).catch( error =>{
+        console.log("getMOCKCurrentWeatherByCityName : " + error);
+    });
+
+}

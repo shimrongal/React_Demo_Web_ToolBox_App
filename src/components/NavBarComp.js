@@ -1,5 +1,6 @@
-import {  Nav, Navbar, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {  Button, Nav, Navbar } from 'react-bootstrap';
+import { Link, Redirect } from 'react-router-dom';
+import  firebaseAuthManager   from "../utils/FirebaseConfig";
 
 /**
  * Created by Gal Shimron on 10/05/2021.
@@ -10,21 +11,32 @@ import { Link } from 'react-router-dom';
  * 
  */
 
-function NavBarComp(params) {
+function NavBarComp() {
+
+
+  const signOut = async path=>{
+    await firebaseAuthManager.auth().signOut().then(()=>{
+    }).catch( error =>{
+      console.log("Sign out error : " +console.error() ) ;
+    });
+    return <Redirect to={path} replace/> ;
+
+  }
+
     return(
     <Navbar  bg="light" expand="lg">
+
     <Navbar.Brand href="#home">ToolBox</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link as={Link} to="/" >Home</Nav.Link>
-        <Nav.Link as={Link}  to="/shopping_list">Shopping list</Nav.Link>
-        <Nav.Link as={Link}  to="/parking">Parking</Nav.Link>
-
+        <Nav.Link as={Link} to="/" replace>Home</Nav.Link>
+        <Nav.Link as={Link} to="/shopping_list" replace>Shopping list</Nav.Link>
+        <Nav.Link as={Link} to="/parking" replace>Parking</Nav.Link>     
       </Nav>
+      <Button onClick={()=>signOut("/login")}>Sign out</Button>
     </Navbar.Collapse>
   </Navbar>)
 }
-
 
 export default NavBarComp;

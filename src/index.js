@@ -4,11 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+/**
+ * Strict Mode removed for develop
+ *   Warning: StrictMode will render the components twice only on the development mode not production. 
+ *   
+ * *** Add Strict mode on testing phase.
+ */
+
+
 ReactDOM.render(
-  <React.StrictMode>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  ,document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
