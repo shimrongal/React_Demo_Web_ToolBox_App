@@ -11,8 +11,8 @@ let fireStoreDb = firebase.firestore();
  * Return List of israeli cities from json file - this is mostly for demonstrate reading from json file 
  * @param {*} setCityNameArr 
  */
-export const getCityList =(setCityNameArr)=>{
-    axios.get('israel_city_list.json').then(response=>{
+export const getCityList =async setCityNameArr=>{
+    await axios.get('israel_city_list.json').then(response=>{
         setCityNameArr(response.data.map((item)=>{
             return item.hebrew_name;
         }));
@@ -23,7 +23,7 @@ export const getCityList =(setCityNameArr)=>{
  * Return shopping list from Firestore db
  * @param {*} updateShoppingList 
  */
-export const getShoppingList= (updateShoppingList)=>{
+export const getShoppingList= updateShoppingList=>{
     const tempShoppingItems = [];
     fireStoreDb.collection("shopping-list").get().then( 
      (querySnapshot)=>{
