@@ -1,5 +1,5 @@
 
-import { HashRouter,  Route, Switch } from 'react-router-dom';
+import { BrowserRouter, HashRouter,  Redirect,  Route, Switch } from 'react-router-dom';
 import './App.css';
 import {  getCityList } from "./utils/HelperFunctions";
 import { AuthProvider } from "./utils/Auth";
@@ -38,7 +38,7 @@ function App() {
 
   return (
     <AuthProvider id="p-app-container">
-      <HashRouter>
+      <BrowserRouter>
         <NavBarComp /> 
         <Switch>      
           <PrivateRoute exact path="/" >      <HomePage weatherObject= {currentWeatherObject}  /> </PrivateRoute>
@@ -46,8 +46,9 @@ function App() {
           <Route exact path="/signup"  >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping_lists"><ShoppingListsPage    /> </Route>
           <Route exact path="/parking"   >    <ParkingPage cities={cityNameArr}/> </Route>
+          
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
       
     </AuthProvider>
 
