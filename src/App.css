@@ -1,4 +1,9 @@
 /*Created by Gal Shimron on 9/05/2021. */
+body {
+  background-color: purple !important;
+}
+
+
 .sr-only{
   display: none !important;
 }
@@ -9,7 +14,7 @@ button{
   color: black !important;
   background-color: cornsilk !important;
   border-radius: 5px !important;
-  padding: 5px;
+  padding: 2px 5px;
 }
 
 #root {
@@ -17,7 +22,6 @@ button{
   padding: 0;
   height: 100vw;
   text-align: center;
-  background-color: lightsalmon;
 }
 
 .navbar {

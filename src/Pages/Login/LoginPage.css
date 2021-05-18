@@ -1,27 +1,52 @@
 /*Created by Gal Shimron on 9/05/2021. */
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,300&display=swap');
+
+#p-login-container{
+    display: flex;
+    justify-content: center;
+    padding: 5% 10%;
+}
+
+label{
+    font-family: 'Merriweather', serif;
+
+}
 
 #p-login {
-    margin: 0 35% 0 35%;
     border-radius: 1%;
+    padding-left: 1px;
+    flex: 1;
 }
 
+ .p-col-info{
+    flex: 1;
+    padding-right: 1%;
+}
+
+#p-login form input {
+    width: 90%;
+    margin: 0 5%;
+}
 
 #p-login h1{
-    padding-top: 15%;
     text-align: center;
-    font-family: 'Oswald', sans-serif;
-}
-
-#p-login p{
-    margin: 0 40%;
-}
-
-#p-login form input{
-    width: 100%;
+    font-family: 'Six Caps', sans-serif;
 }
 
 .flex-group{
     margin: 10px;
     display: flex;
     justify-content: space-between;
+}
+
+
+
+#p-login-container .p-col-info p h1  {
+    font-family: 'Six Caps', sans-serif;
+}
+
+#p-login-container .p-col-info p p {
+    font-family: 'Merriweather', serif;
 }

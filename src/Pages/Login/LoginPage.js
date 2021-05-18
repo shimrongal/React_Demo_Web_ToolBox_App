@@ -49,34 +49,52 @@ const LoginPage = () => {
   }
   else {
 
-  return (
-    <div id="p-login">
-      <h1>Log in</h1>
-      <Form id="p-login-form" onSubmit={handleLogin}>
-        <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email address</Form.Label>
-            <Form.Control name="email" type="email" placeholder="Enter email" />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
-        </Form.Group>
+  return (<div id="p-login-container">
+      <div className="p-col-info">
+        <p>
+          <h1>Welcome to ToolBox App</h1>
+          <p> This app should be your best friend your security and your BOSS ;) 
+           <p>App Main Features are:</p>
+            <p>Current weather (by open weather api).</p>
+            <p>Alerts from Pikod Aoref.</p>
+            <p>Save your spot and give you direction to get back to it.</p>
+            <p>Show all near Parking Lots.</p>
+            <p>Shared shopping list.</p>  
+        
+          </p>
+          <h6>Developed by GS-Dev </h6>
 
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Form.Control name="password"  type="password" placeholder="Password" />
-          </Form.Group>
-          <Form.Group className="flex-group" controlId="formBasicCheckbox">
-            <Form.Label>
-              Forgot password?
-            </Form.Label> 
-            <Button variant="primary" onClick={()=> setSignUpStatus(true)} >SignUp</Button>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Submit
-          </Button>
-      </Form>
-     
+        </p>
+      </div>
 
+
+      <div id="p-login">
+        <h1>Log in</h1>
+        <Form id="p-login-form" onSubmit={handleLogin}>
+          <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control name="email" type="email" placeholder="Enter email" />
+              <Form.Text className="text-muted">
+                We'll never share your email with anyone else.
+              </Form.Text>
+          </Form.Group>
+
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control name="password"  type="password" placeholder="Password" />
+            </Form.Group>
+            <Form.Group className="flex-group" controlId="formBasicCheckbox">
+              <Form.Label style={{visibility:'hidden'}}>
+                Forgot password?
+              </Form.Label> 
+              <Button variant="primary" onClick={()=> setSignUpStatus(true)} >SignUp</Button>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Submit
+            </Button>
+        </Form>
+      
+        </div>
     </div>
   );
   }
