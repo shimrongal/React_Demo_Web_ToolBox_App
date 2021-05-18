@@ -17,7 +17,6 @@ function ShoppingListsPage() {
    
     useEffect(()=>{
     getShoppingLists(updateShoppingLists);
-     // getShoppingList(updateShoppingList);
     },[]);
 
 
