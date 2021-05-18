@@ -1,8 +1,6 @@
 
 import { HashRouter,  Route, Switch } from 'react-router-dom';
 import './App.css';
-import  firebaseAuthManager   from "./utils/FirebaseConfig";
-
 import {  getCityList } from "./utils/HelperFunctions";
 import { AuthProvider } from "./utils/Auth";
 import HomePage from "./pages/home/HomePage";
@@ -11,10 +9,10 @@ import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from 'react';
 import ParkingPage from './pages/parking/ParkingPage';
-import ShoppingPage from './pages/shopping_list/ShoppingPage';
-import { getCurrentWeatherByCityName, getMOCKCurrentWeatherByCityName } from './utils/WeatherManager';
+import {  getMOCKCurrentWeatherByCityName } from './utils/WeatherManager';
 import NavBarComp from './components/NavBarComp';
-import { orefWarningMessagesManager } from './utils/OrefWarningMessagesManager';
+import ShoppingListsPage from './pages/shopping_list/ShoppingListsPage';
+
 
 /**
  * Created by Gal Shimron on 9/05/2021.
@@ -46,7 +44,7 @@ function App() {
           <PrivateRoute exact path="/" >      <HomePage weatherObject= {currentWeatherObject}  /> </PrivateRoute>
           <Route exact path="/login"   >      <LoginPage /> </Route>
           <Route exact path="/signup"  >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_list"> <ShoppingPage    /> </Route>
+          <Route exact path="/shopping_lists"><ShoppingListsPage    /> </Route>
           <Route exact path="/parking"   >    <ParkingPage cities={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>

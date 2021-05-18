@@ -26,13 +26,13 @@ function NavBarComp() {
     return(
     <Navbar  bg="light" expand="lg">
 
-    <Navbar.Brand href="#home">ToolBox</Navbar.Brand>
+    <Navbar.Brand as={Link} to="/" replace >ToolBox</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
-        <Nav.Link as={Link} to="/" replace>Home</Nav.Link>
-        <Nav.Link as={Link} to="/shopping_list" replace>Shopping list</Nav.Link>
+        <Nav.Link as={Link} to="/shopping_lists" replace>Shopping list</Nav.Link>
         <Nav.Link as={Link} to="/parking" replace>Parking</Nav.Link>     
+
       </Nav>
       <Button onClick={()=>signOut("/login")}>Sign out</Button>
     </Navbar.Collapse>
