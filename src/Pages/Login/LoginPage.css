@@ -31,6 +31,7 @@ label{
 }
 
 #p-login h1{
+    font-size: 50px;
     text-align: center;
     font-family: 'Six Caps', sans-serif;
 }
@@ -45,8 +46,10 @@ label{
 
 #p-login-container .p-col-info p h1  {
     font-family: 'Six Caps', sans-serif;
+    font-size: 50px;
 }
 
 #p-login-container .p-col-info p p {
     font-family: 'Merriweather', serif;
+    font-weight: bolder;
 }
