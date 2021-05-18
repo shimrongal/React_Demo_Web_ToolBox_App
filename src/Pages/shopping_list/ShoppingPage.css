@@ -5,20 +5,15 @@
 *
 **/
 .shopping-item-row{
-    margin: 20px 50px;
+    margin: 1% 5%;
     display: flex;
     justify-content: center;
     border: double 5px black;
 }
 
-.shopping-item-row > div{
-    margin: 10px;
-    flex: 1;
-}
-
 /* End of table */
 
+.shopping-item-row > dd{
+    margin: 0 8%;
 
-#shopping-item-header{
-    margin-top: 10px;
 }

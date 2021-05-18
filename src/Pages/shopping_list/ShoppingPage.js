@@ -8,6 +8,7 @@ import { AuthContext } from '../../utils/Auth';
 import { useContext } from 'react';
 import { Redirect } from 'react-router';
 
+
 /**
  * Created by Gal Shimron on 9/05/2021.
  * 
@@ -23,13 +24,7 @@ import { Redirect } from 'react-router';
 function ShoppingPage() {
   const [showAddNewItemModal , updateAddNewItemModal] = useState(false);
   const [shoppingList , updateShoppingList] = useState([]);
-
-
-  useEffect(()=>{
-    getShoppingList(updateShoppingList);
-  },[]);
-
-
+  
   const getShoppingItems = shoppingList.map(item=>{
      return <ShoppingItemComp item={item} isChecked={item.inCart}/>
   })
@@ -42,11 +37,9 @@ function ShoppingPage() {
     return <Redirect to="/login" />;
   }
 
-
-
   return(<div>
           <ShoppingItemListHeaderComp />
-          {getShoppingItems}
+          {getShoppingItems}       
           <button onClick={()=>updateAddNewItemModal(true)}>Add new Item</button>
           <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
         </div>)

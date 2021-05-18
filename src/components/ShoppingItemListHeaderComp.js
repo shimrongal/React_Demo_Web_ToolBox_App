@@ -2,21 +2,21 @@ import "../pages/shopping_list/ShoppingPage.css"
 
 function  ShoppingItemListHeaderComp() {
     
-    return(<div id="shopping-item-header" className="shopping-item-row">
-                <div className="shopping-item-col">
-                    <h1>Name</h1>
-                 </div>
-                <div className="shopping-item-col">
-                    <h1>Brand name</h1>
-                </div>
-                <div className="shopping-item-col">
-                    <h1>Quantity</h1>
-                </div>
-                <div className="shopping-item-col">
-                    <h1>InCart</h1>
-                </div>
+    return(<dl id="shopping-item-header" className="shopping-item-row">
+                <dd className="shopping-item-col">
+                    <h4>Name</h4>
+                 </dd>
+                <dd className="shopping-item-col">
+                    <h4>Brand name</h4>
+                </dd>
+                <dd className="shopping-item-col">
+                    <h4>Quantity</h4>
+                </dd>
+                <dd className="shopping-item-col">
+                    <h4>InCart</h4>
+                </dd>
 
-    </div>)
+    </dl>)
 }
 
 export default ShoppingItemListHeaderComp;

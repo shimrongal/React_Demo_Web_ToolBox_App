@@ -1,9 +1,14 @@
 .shopping-item-checkbox-container{
     display: inline-block;  
     cursor: pointer;
-    padding: 10px;
-
 }
+
 .shopping-item-checkbox-container .shopping-item-checkbox{
-    margin-right: 5px;
+    margin-right: 1%;
+}
+
+.shopping-item-row > li{
+    list-style: none;
+    margin: 0 5%;
+    flex: 1;
 }
