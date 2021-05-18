@@ -1,8 +1,9 @@
 import axios from 'axios';
-import { useState } from 'react';
 import ShoppingItemModel from '../models/ShoppingItemModel';
 
 import firebase from "../utils/FirebaseConfig";
+
+const firebaseBaseCollectionName = "shopping-lists";
 
 let fireStoreDb = firebase.firestore();
 
@@ -20,21 +21,60 @@ export const getCityList =(setCityNameArr)=>{
 }
 
 /**
- * Return shopping list from Firestore db
+ *  Return shopping list from Firestore db
+ * 
+ * @param {*} currentListId 
  * @param {*} updateShoppingList 
  */
-export const getShoppingList= (updateShoppingList)=>{
+export const getShoppingListByName= (currentListId, updateShoppingList)=>{
     const tempShoppingItems = [];
-    fireStoreDb.collection("shopping-list").get().then( 
-     (querySnapshot)=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListId).collection(currentListId +"-data").get().then((querySnapshot)=>{
             querySnapshot.forEach(doc => {                
                 tempShoppingItems.push( new ShoppingItemModel(doc.data().itemName, doc.data().itemBrand , doc.data().itemQuantity , doc.data().inCart ));
-            });
+            });     
             updateShoppingList(tempShoppingItems);
         }).catch( (error)=>{
             console.error("Error getting document: ", error);
     });
 }
+
+
+/**
+ * Return shopping list from Firestore db
+ * @param {*} updateShoppingList 
+ */
+export const getAllShoppingListsData=  updateShoppingLists =>{
+    fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
+        querySnapshot.forEach((currentList)=>{
+            console.log("querySnapshot.forEach((currentList)" + currentList);
+
+            fireStoreDb.collection("shopping-lists").doc(currentList.id).collection(currentList.id +"-data").get()
+            .then(querySnapshot => {
+                const tmpShoppingListsArr =[];
+                querySnapshot.forEach(doc => {
+                    console.log(doc.id, " => ", doc.data());
+                    tmpShoppingListsArr.push(doc.data() );
+                });
+                updateShoppingLists(tmpShoppingListsArr);
+    });
+    });
+});
+}
+
+
+
+export const getShoppingLists = updateShoppingLists =>{
+    fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
+        const tempShoppingListArr = [];
+        querySnapshot.forEach((currentList)=>{
+            console.log("(currentList)" + currentList.id);
+            tempShoppingListArr.push(currentList.id);
+            });
+    
+        updateShoppingLists(tempShoppingListArr) });
+}
+
+
 
 /**
  * Will create entry in Firestore db with ID

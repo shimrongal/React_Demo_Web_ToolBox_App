@@ -4,7 +4,6 @@ import ShoppingItemComp from '../../components/shopping_item_comp/ShoppingItemCo
 import { useState } from 'react';
 import NewShoppingItemModal from '../../components/modals/NewShoppingItemModal';
 import ShoppingItemListHeaderComp from '../../components/ShoppingItemListHeaderComp';
-import { getShoppingList } from '../../utils/HelperFunctions';
 
 /**
  * Created by Gal Shimron on 9/05/2021.
@@ -21,15 +20,11 @@ import { getShoppingList } from '../../utils/HelperFunctions';
 function ShoppingPage() {
   const [showAddNewItemModal , updateAddNewItemModal] = useState(false);
   const [shoppingList , updateShoppingList] = useState([]);
-
-  useEffect(()=>{
-    getShoppingList(updateShoppingList);
-  },[]);
-
-
+  
   const getShoppingItems = shoppingList.map(item=>{
      return <ShoppingItemComp item={item} isChecked={item.inCart}/>
   })
+
 
   return(<div>
           <NavBarComp />
