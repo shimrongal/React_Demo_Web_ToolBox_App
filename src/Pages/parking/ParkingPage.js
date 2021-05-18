@@ -25,7 +25,9 @@ function ParkingPage({cities}) {
      *  2. Get current location to use in "direction" Mode for directions back to the car.
      * 
      * */
-    const onMainParkingButtonClick = ()=> {
+    const onMainParkingButtonClick = ()=> { 
+        document.getElementById("p-loader").className = "lds-spinner";
+
         if (typeof parkingLatLng === 'undefined' && typeof parkingLocation === 'undefined'){
             getCurrentLocation(updateParkingLatLng, updateShowParkingAddressModal , "parkingLocation",setMapUrl,setWhatToShow, parkingLatLng, setMainBtnText);
         }
@@ -35,6 +37,7 @@ function ParkingPage({cities}) {
     }
 
     const onFindParkingButtonClick =() =>{
+        document.getElementById("p-loader").className = "lds-spinner";
         setMainBtnText("Save Parking");
         updateParkingLocation();
         updateParkingLatLng()
@@ -56,7 +59,10 @@ function ParkingPage({cities}) {
             <div className="title-container">
                 <h1 className="cyber-text">Would you like to park ?</h1>
                 <img src="./park_icon.png"  alt="parking_lot"/>
-            </div>}            
+            </div>}    
+            
+            <div id="p-loader" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+
             <div className="p-parking-page-button-container">
                 <button onClick={()=>onMainParkingButtonClick()}>{mainBtnText}</button>
                 <button onClick={()=>onFindParkingButtonClick()}>Find parking lot</button>

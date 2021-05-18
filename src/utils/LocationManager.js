@@ -6,6 +6,8 @@ export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddres
         const latitude  = position.coords.latitude;
         const longitude = position.coords.longitude;
         updateParkingLatLng( { lat:latitude, lng:longitude} );
+
+        
         if (tempWhatToShow === "parkingLocation"){
             setMapUrl(`https://www.google.com/maps/embed/v1/place?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&q=${latitude},${longitude}`);
             setMainBtnText("Get directions");
@@ -21,6 +23,7 @@ export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddres
                 console.log("error https://maps.googleapis.com/maps/api/geocode/json?address= : "+error);
             });
         }
+        document.getElementById("p-loader").className = "";
     }
 
     function error() {
