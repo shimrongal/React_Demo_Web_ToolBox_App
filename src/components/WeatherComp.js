@@ -16,7 +16,7 @@ function WeatherComp({weatherObject}) {
                         <img src={ openWeatherIconsBaseUrl + weatherObject.weather[0].icon + ".png"} />
                     </div>
                     <div className="current-conditions">
-                        <div>{weatherObject.main.temp}</div>
+                        <div>{Math.round( weatherObject.main.temp )}</div>
                         <div>{weatherObject.weather[0].description}</div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@ function WeatherComp({weatherObject}) {
             <div>
                 <ul className="row">
                     <li>{`Humidity: ${weatherObject.main.humidity}%`}</li>
-                    <li>{`Wind: ${weatherObject.wind.speed}2m/s`}</li>
+                    <li>{`Wind: ${Math.round(weatherObject.wind.speed)} m/s`}</li>
                     <li>{`Cloud cover: ${weatherObject.clouds.all}%`}</li>
                 </ul>
             </div>
