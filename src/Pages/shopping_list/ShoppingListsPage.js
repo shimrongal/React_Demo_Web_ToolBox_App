@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getShoppingLists } from "../../utils/HelperFunctions";
 import 'font-awesome/css/font-awesome.min.css';
 import "./ShoppingListsPage.css";
 import NavBarComp from "../../components/NavBarComp";
 import ShoppingListItem from "../../components/shopping_item_comp/ShoppingListItem";
+import { AuthContext } from "../../utils/Auth";
+import { Redirect } from "react-router";
 
 function ShoppingListsPage() {
     
@@ -19,6 +21,11 @@ function ShoppingListsPage() {
     getShoppingLists(updateShoppingLists);
     },[]);
 
+    const {currentUser} = useContext(AuthContext);
+
+    if (typeof currentUser ==='undefined' || currentUser ===null) {
+      return <Redirect to="/login" />;
+    }
 
     return(<div className="p-container">
         <NavBarComp />
