@@ -12,6 +12,7 @@ import ParkingPage from './pages/parking/ParkingPage';
 import {  getMOCKCurrentWeatherByCityName } from './utils/WeatherManager';
 import NavBarComp from './components/NavBarComp';
 import ShoppingListsPage from './pages/shopping_list/ShoppingListsPage';
+import NotFoundPage from './pages/not_found_page/NotFoundPage';
 
 
 /**
@@ -39,14 +40,14 @@ function App() {
   return (
     <AuthProvider id="p-app-container">
       <BrowserRouter>
-        <NavBarComp /> 
+        
         <Switch>      
-          <PrivateRoute exact path="/" >      <HomePage weatherObject= {currentWeatherObject}  /> </PrivateRoute>
+          <PrivateRoute exact path="/" >      <NavBarComp />   <HomePage weatherObject= {currentWeatherObject}  /> </PrivateRoute>
           <Route exact path="/login"   >      <LoginPage /> </Route>
           <Route exact path="/signup"  >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
-          <Route exact path="/shopping_lists"><ShoppingListsPage    /> </Route>
-          <Route exact path="/parking"   >    <ParkingPage cities={cityNameArr}/> </Route>
-          
+          <Route exact path="/shopping_lists"><NavBarComp />  <ShoppingListsPage    /> </Route>
+          <Route exact path="/parking"   >    <NavBarComp />  <ParkingPage cities={cityNameArr}/> </Route>
+          <Route path="/"                >    <NavBarComp />  <NotFoundPage /> </Route>
         </Switch>
       </BrowserRouter>
       
