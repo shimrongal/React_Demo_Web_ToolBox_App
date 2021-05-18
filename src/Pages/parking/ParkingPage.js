@@ -48,8 +48,6 @@ function ParkingPage({cities}) {
     const {currentUser} = useContext(AuthContext);
 
     if (typeof currentUser ==='undefined' || currentUser ===null) {
-       alert("Please Log in or Sign up first");
-
       return <Redirect to="/login" />;
     }
     return(<div id="p-parking-page-container">

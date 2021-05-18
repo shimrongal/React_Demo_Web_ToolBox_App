@@ -1,5 +1,5 @@
 
-import { BrowserRouter, HashRouter,  Redirect,  Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import {  getCityList } from "./utils/HelperFunctions";
 import { AuthProvider } from "./utils/Auth";
@@ -25,11 +25,13 @@ import NotFoundPage from './pages/not_found_page/NotFoundPage';
  *           For Weather widget to work just uncomment it.
  */
 
+ 
 function App() {
  
   const [userList , updateUsersList] = useState([[]]);
   const [cityNameArr ,setCityNameArr] = useState();
   const [currentWeatherObject , setCurrentWeatherObject] = useState();
+
 
   useEffect(()=>{
     getCityList(setCityNameArr); 
@@ -47,7 +49,7 @@ function App() {
           <Route exact path="/signup"  >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping_lists"><NavBarComp />  <ShoppingListsPage    /> </Route>
           <Route exact path="/parking"   >    <NavBarComp />  <ParkingPage cities={cityNameArr}/> </Route>
-          <Route path="/"                >    <NavBarComp />  <NotFoundPage /> </Route>
+          <Route path="/"                >    <NotFoundPage /> </Route>
         </Switch>
       </BrowserRouter>
       
