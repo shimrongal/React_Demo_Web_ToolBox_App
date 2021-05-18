@@ -1,7 +1,7 @@
 import './LoginPage.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 import {AuthContext} from "../../utils/Auth";
@@ -20,33 +20,39 @@ import { Button, Form } from 'react-bootstrap';
 
 
 
-const LoginPage = ({ history }) => {
-  const handleLogin = useCallback(
-    async event => {
-      event.preventDefault();
-      const { email, password , } = event.target.elements;
-      try {
-        await app
-          .auth()
-          .signInWithEmailAndPassword(email.value, password.value);
-        history.push("/");
-      } catch (error) {
-        alert(error);
+const LoginPage = () => {
+
+  const [shouldSignUp, setSignUpStatus] = useState(false);
+
+    const handleLogin = useCallback(
+      async event => {
+        event.preventDefault();
+        const { email, password , } = event.target.elements;
+        try {
+          await app
+            .auth()
+            .signInWithEmailAndPassword(email.value, password.value);
+        } catch (error) {
+          alert(error);
+        }
       }
-    },
-    [history]
-  );
+    );
+  
 
   const { currentUser } = useContext(AuthContext);
 
   if (currentUser) {
     return <Redirect to="/" />;
   }
+  else if (shouldSignUp){
+    return <Redirect to="/signup" />
+  }
+  else {
 
   return (
     <div id="p-login">
       <h1>Log in</h1>
-      <Form onSubmit={handleLogin}>
+      <Form id="p-login-form" onSubmit={handleLogin}>
         <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control name="email" type="email" placeholder="Enter email" />
@@ -63,7 +69,7 @@ const LoginPage = ({ history }) => {
             <Form.Label>
               Forgot password?
             </Form.Label> 
-            <Button variant="primary" onClick={()=> history.push("/signup") } >SignUp</Button>
+            <Button variant="primary" onClick={()=> setSignUpStatus(true)} >SignUp</Button>
           </Form.Group>
           <Button variant="primary" type="submit">
             Submit
@@ -73,6 +79,7 @@ const LoginPage = ({ history }) => {
 
     </div>
   );
+  }
 };
 
 export default withRouter(LoginPage);

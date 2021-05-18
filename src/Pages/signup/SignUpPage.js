@@ -33,11 +33,10 @@ const SignUpPage = ({ history , userList, updateUsersList}) => {
       await app
         .auth()
         .createUserWithEmailAndPassword(email.value, password.value);
-      history.push("/");
     } catch (error) {
       alert(error);
     }
-  }, [history]);
+  });
 
   return (
     <div id="p-sign-in">
