@@ -1,0 +1,28 @@
+
+#c-oref-warning-container {
+    width: 40%;
+    margin: 0.1% 30%;
+    padding: 0.1%;
+    display: flex;
+    justify-content: center;
+    background-color: #fffffe;
+    border: gainsboro 1px solid;
+    border-radius: 5px;
+  
+}
+
+ #c-oref-warning-container li {
+    flex: 1;
+    list-style: none;
+    animation-name: leftToRight;
+    position: relative;
+    animation-duration: 2s;
+
+}
+
+  @keyframes leftToRight {
+
+    0%   { background-color: #fffffe;  border: gainsboro 1px solid ; border-radius: 5px; left:0px; top:0px;}
+    50%  { background-color: #fffffe;  border: gainsboro 1px solid ; border-radius: 5px; left:200px; top:0px;}
+    100% { background-color: #fffffe;  border: gainsboro 1px solid ; border-radius: 5px; left:0; top:0px;}
+  }
