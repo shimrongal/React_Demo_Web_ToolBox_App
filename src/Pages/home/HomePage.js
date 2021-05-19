@@ -14,7 +14,7 @@ import { orefWarningMessagesManager } from '../../utils/OrefWarningMessagesManag
  * @param {*} param0 
  */
 
-const HomePage = ({weatherObject, orefAlerts}) => {
+const HomePage = ({weatherObject}) => {
   const [currentOrefAlerts , updateOrefAlerts] = useState();
   useEffect(()=>{
     orefWarningMessagesManager(updateOrefAlerts) ;

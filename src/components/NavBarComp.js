@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {  Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -10,10 +11,11 @@ import { Link } from 'react-router-dom';
  * 
  */
 
-function NavBarComp(params) {
+function NavBarComp() {
+
     return(
     <Navbar  bg="light" expand="lg">
-    <Navbar.Brand href="#home">ToolBox</Navbar.Brand>
+    <Navbar.Brand as={Link}  to="/">ToolBox</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="mr-auto">
