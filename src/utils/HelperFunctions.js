@@ -21,7 +21,7 @@ export const getCityList =(setCityNameArr)=>{
 }
 
 /**
- *  Return shopping list from Firestore db
+ *  Return shopping list from Firestore db by list name
  * 
  * @param {*} currentListId 
  * @param {*} updateShoppingList 
@@ -40,82 +40,41 @@ export const getShoppingListByName= (currentListId, updateShoppingList)=>{
 
 
 /**
- * Return shopping list from Firestore db
- * @param {*} updateShoppingList 
+ * Get List of shopping lists
+ * @param {*} updateShoppingLists 
  */
-export const getAllShoppingListsData=  updateShoppingLists =>{
-    fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
-        querySnapshot.forEach((currentList)=>{
-            console.log("querySnapshot.forEach((currentList)" + currentList);
-
-            fireStoreDb.collection("shopping-lists").doc(currentList.id).collection(currentList.id +"-data").get()
-            .then(querySnapshot => {
-                const tmpShoppingListsArr =[];
-                querySnapshot.forEach(doc => {
-                    console.log(doc.id, " => ", doc.data());
-                    tmpShoppingListsArr.push(doc.data() );
-                });
-                updateShoppingLists(tmpShoppingListsArr);
-    });
-    });
-});
-}
-
 
 
 export const getShoppingLists = updateShoppingLists =>{
     fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
         const tempShoppingListArr = [];
         querySnapshot.forEach((currentList)=>{
-            console.log("(currentList)" + currentList.id);
             tempShoppingListArr.push(currentList.id);
             });
     
         updateShoppingLists(tempShoppingListArr) });
 }
 
-
-
 /**
  * Will create entry in Firestore db with ID
  *  The ID Scheme is : name + brand-name 
  * @param {*} shoppingItem 
  */
-export const addShoppingItemToFireStore = (shoppingItem)=>{
-    fireStoreDb.collection("shopping-list").doc(shoppingItem.itemName + "_" + shoppingItem.itemBrand).set({
+export const addShoppingItemToFireStore = (currentListName ,  shoppingItem)=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListName).collection(currentListName+"-data").doc(shoppingItem.itemName+"_"+shoppingItem.itemBrand).set({
         itemName: shoppingItem.itemName,
         itemBrand: shoppingItem.itemBrand,
         itemQuantity: shoppingItem.itemQuantity,
         inCart:false
+    }).catch((error)=>{
+        console.log("addShoppingItemToFireStore error : " + error);
     });
 }
 
-
-/**
- * Will create entry in Firestore db with random id
- * @param {*} shoppingItem 
- */
-export const saveShoppingItem= (shoppingItem)=>{
-    fireStoreDb.collection("shopping-list").add({
-        itemName: shoppingItem.itemName,
-        itemBrand: shoppingItem.itemBrand,
-        itemQuantity: shoppingItem.itemQuantity,
-        inCart:false
-    })
-    .then((docRef) => {
-        //TODO: implement
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
-}
-
-export const saveCheckBoxState= ( name , brand,   checkBoxStatus)=>{
-    fireStoreDb.collection("shopping-list").doc(name + "_" + brand).update({
+export const saveCheckBoxState= (currentListName, item,   checkBoxStatus)=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListName).collection(currentListName+"-data").doc(item.itemName+"_"+item.itemBrand).update({
         "inCart" : checkBoxStatus
-    })
-    .catch((error) => {
+    }).catch((error) => {
         console.error("Error updating document: ", error);
     });
 }

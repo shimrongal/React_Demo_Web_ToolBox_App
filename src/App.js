@@ -12,6 +12,7 @@ import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from 'react';
 import ParkingPage from './pages/parking/ParkingPage';
 import ShoppingListsPage from './pages/shopping_list/ShoppingListsPage';
+import ShoppingPage from './pages/shopping_list/ShoppingPage';
 
 
 /**
@@ -41,7 +42,7 @@ function App() {
           <Route exact path="/login"  component={LoginPage}></Route>
           <Route exact path="/signup" >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping_lists"><ShoppingListsPage    /> </Route>
-
+          <Route exact path="/shopping_list" >   <ShoppingPage /> </Route>
           <Route exact path="/parking"      ><ParkingPage cities={cityNameArr}/> </Route>
         </Switch>
       </HashRouter>

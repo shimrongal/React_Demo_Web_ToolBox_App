@@ -4,6 +4,8 @@ import ShoppingItemComp from '../../components/shopping_item_comp/ShoppingItemCo
 import { useState } from 'react';
 import NewShoppingItemModal from '../../components/modals/NewShoppingItemModal';
 import ShoppingItemListHeaderComp from '../../components/ShoppingItemListHeaderComp';
+import { useLocation } from 'react-router';
+import { getShoppingListByName } from '../../utils/HelperFunctions';
 
 /**
  * Created by Gal Shimron on 9/05/2021.
@@ -18,20 +20,26 @@ import ShoppingItemListHeaderComp from '../../components/ShoppingItemListHeaderC
  */
 
 function ShoppingPage() {
-  const [showAddNewItemModal , updateAddNewItemModal] = useState(false);
-  const [shoppingList , updateShoppingList] = useState([]);
   
-  const getShoppingItems = shoppingList.map(item=>{
-     return <ShoppingItemComp item={item} isChecked={item.inCart}/>
-  })
+  const [showAddNewItemModal , updateAddNewItemModal] = useState(false);
+  const [shoppingList , updateShoppingList] = useState();
 
+  const currentListName = useLocation().data
+  useEffect( ()=>{
+    if (currentListName !== 'undefined');{
+      getShoppingListByName( currentListName, updateShoppingList);
+    }
+  },[currentListName]);
+
+  const getShoppingItems = shoppingList ? shoppingList.map( (item , index)=>{
+     return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart}/> }) : "";
 
   return(<div>
           <NavBarComp />
           <ShoppingItemListHeaderComp />
-          {getShoppingItems}       
+          {shoppingList ? getShoppingItems : ""}       
           <button onClick={()=>updateAddNewItemModal(true)}>Add new Item</button>
-          <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
+          <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentListName={currentListName} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
         </div>)
     
 }

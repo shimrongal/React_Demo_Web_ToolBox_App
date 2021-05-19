@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { saveCheckBoxState } from "../../utils/HelperFunctions";
 import "./ShoppingItemComp.css";
 /**
@@ -7,13 +7,12 @@ import "./ShoppingItemComp.css";
  * ShoppingItemComp class 
  */
 
-function ShoppingItemComp({item , isChecked}) {
+function ShoppingItemComp({currentListName, item , isChecked}) {
 
-    //TODO: Figure out best practice 
     const [isCheckedItem , updateCheckItem] = useState(isChecked);
 
     const handleCheckBoxChange =()=>{
-            saveCheckBoxState(item.itemName , item.itemBrand, !isCheckedItem)
+            saveCheckBoxState(currentListName,  item, !isCheckedItem)
             updateCheckItem(!isCheckedItem)   
         }
 
