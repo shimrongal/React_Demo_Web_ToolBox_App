@@ -11,14 +11,19 @@ function ShoppingListsPage() {
     
     const [shoppingLists , updateShoppingLists] = useState();
 
+    const [isItemDeleted , setDeletedItem] = useState(true);
     const getLists = shoppingLists ? shoppingLists.map((item,index)=>{
-        return <ShoppingListItem key={item+ "_" + index} item={item} />}) : "";
+        return <ShoppingListItem key={item+ "_" + index} item={item} setDeletedItem={setDeletedItem} />} ) : "";
     
     const {currentUser} = useContext(AuthContext);
 
     useEffect(()=>{
-        getShoppingLists(updateShoppingLists);
-    },[]);
+        if (isItemDeleted){
+            getShoppingLists(updateShoppingLists);
+            setDeletedItem(false);
+        }
+
+    },[isItemDeleted]);
 
     if (typeof currentUser ==='undefined' || currentUser ===null) {
       return <Redirect to="/login" />;

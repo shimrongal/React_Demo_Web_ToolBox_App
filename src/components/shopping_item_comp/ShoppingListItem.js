@@ -1,10 +1,15 @@
-import {  useState } from "react";
 import { Link } from "react-router-dom";
 import "../../pages/shopping_list/ShoppingListsPage.css";
+import { deleteShoppingList } from "../../utils/HelperFunctions";
 
-function ShoppingListItem({item}) {
-    
-    return(<Link to={{
+function ShoppingListItem({item , setDeletedItem}) {
+
+    const handleClick = async ()=>{
+        await deleteShoppingList(item);
+        setDeletedItem(true)
+    }
+
+    return(<div> <Link to={{
                         pathname: "/shopping_list",
                         data: item // your data array of objects
                       }}
@@ -14,7 +19,9 @@ function ShoppingListItem({item}) {
                                 <i id={item} className="fa fa-angle-right" > </i>                         
                             </div>
                         </div>
-            </Link>)
+            </Link>
+                <button onClick={handleClick}> <i className="fa fa-angle-right"></i> </button>
+            </div>)
 }
 
 export default ShoppingListItem;

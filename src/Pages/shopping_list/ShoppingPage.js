@@ -23,16 +23,20 @@ function ShoppingPage() {
   
   const [showAddNewItemModal , updateAddNewItemModal] = useState(false);
   const [shoppingList , updateShoppingList] = useState();
-
+  const [itemDeleted ,setItemDeleted] = useState(true);
+ 
   const currentListName = useLocation().data
+
+
   useEffect( ()=>{
-    if (currentListName !== 'undefined');{
+    if (currentListName !== 'undefined' && itemDeleted){
       getShoppingListByName( currentListName, updateShoppingList);
+      setItemDeleted(false);
     }
-  },[currentListName]);
+  },[currentListName , itemDeleted]);
 
   const getShoppingItems = shoppingList ? shoppingList.map( (item , index)=>{
-     return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart}/> }) : "";
+     return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart} setItemDeleted={setItemDeleted} />  }) : "";
 
   return(<div>
           <NavBarComp />
