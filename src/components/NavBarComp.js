@@ -1,5 +1,6 @@
-import {  Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import {  Button, Nav, Navbar } from 'react-bootstrap';
+import { Link, Redirect } from 'react-router-dom';
+import  firebaseAuthManager   from "../utils/FirebaseConfig";
 
 /**
  * Created by Gal Shimron on 10/05/2021.
@@ -12,7 +13,15 @@ import { Link } from 'react-router-dom';
 
 function NavBarComp() {
 
-    return(
+  const signOut = async path=>{
+    await firebaseAuthManager.auth().signOut().then(()=>{
+    }).catch( error =>{
+      console.log("Sign out error : " +console.error() ) ;
+    });
+    return <Redirect to={path} replace/> ;
+  }
+
+  return(
 
     <Navbar  bg="light" expand="lg">
     <Navbar.Brand as={Link}  to="/">ToolBox</Navbar.Brand>

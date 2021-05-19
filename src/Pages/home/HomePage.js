@@ -14,11 +14,7 @@ import { orefWarningMessagesManager } from '../../utils/OrefWarningMessagesManag
  * @param {*} param0 
  */
 
-<<<<<<< HEAD
-const HomePage = ({weatherObject, orefAlerts}) => {
-=======
 const HomePage = ({weatherObject}) => {
->>>>>>> home_page
   const [currentOrefAlerts , updateOrefAlerts] = useState();
   useEffect(()=>{
     orefWarningMessagesManager(updateOrefAlerts) ;
@@ -32,10 +28,6 @@ const HomePage = ({weatherObject}) => {
 
   const {currentUser} = useContext(AuthContext);
   if (typeof currentUser ==='undefined' || currentUser === null) {
-<<<<<<< HEAD
-    alert("Please Log in or Sign up first");
-=======
->>>>>>> home_page
     return <Redirect to="/login" />;
   }
   return (
