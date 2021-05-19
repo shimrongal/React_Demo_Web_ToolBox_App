@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { saveCheckBoxState } from "../../utils/HelperFunctions";
+import {  useState } from "react";
+import { deleteShoppingItem, saveCheckBoxState } from "../../utils/HelperFunctions";
 import "./ShoppingItemComp.css";
 /**
  * Created by Gal Shimron on 10/05/2021.
@@ -7,13 +7,17 @@ import "./ShoppingItemComp.css";
  * ShoppingItemComp class 
  */
 
-function ShoppingItemComp({item , isChecked}) {
+function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) {
 
-    //TODO: Figure out best practice 
     const [isCheckedItem , updateCheckItem] = useState(isChecked);
 
+    const handleTrashIconClick = async ()=>{
+        await deleteShoppingItem(currentListName,item);
+        setItemDeleted(true);
+    }
+
     const handleCheckBoxChange =()=>{
-            saveCheckBoxState(item.itemName , item.itemBrand, !isCheckedItem)
+            saveCheckBoxState(currentListName,  item, !isCheckedItem)
             updateCheckItem(!isCheckedItem)   
         }
 
@@ -29,6 +33,9 @@ function ShoppingItemComp({item , isChecked}) {
                 </li>
                 <li className="shopping-item-checkbox-container">
                     <input className="shopping-item-checkbox"  type="checkbox" checked={isCheckedItem} onChange={()=>handleCheckBoxChange()} />  
+                </li> 
+                <li className="shopping-item-checkbox-container" onClick={handleTrashIconClick}>
+                     <i id={item.itemName+ "_" +item.itemBrand} className="fa fa-angle-right" > </i>                         
                 </li> 
         
         {/* TODO: create data base of item and corresponding images for better look and feal

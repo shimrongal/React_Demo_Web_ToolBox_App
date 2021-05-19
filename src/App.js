@@ -13,6 +13,7 @@ import {  getMOCKCurrentWeatherByCityName } from './utils/WeatherManager';
 import NavBarComp from './components/NavBarComp';
 import ShoppingListsPage from './pages/shopping_list/ShoppingListsPage';
 import NotFoundPage from './pages/not_found_page/NotFoundPage';
+import ShoppingPage from './pages/shopping_list/ShoppingPage';
 
 
 /**
@@ -32,6 +33,13 @@ function App() {
   const [cityNameArr ,setCityNameArr] = useState();
   const [currentWeatherObject , setCurrentWeatherObject] = useState();
 
+  /**
+   *   use this to reset db
+   *     
+   *   console.log("App");
+   * resetDeletedListsMOCK();
+   * resetDeletedListItemsMOCK();
+   */
 
   useEffect(()=>{
     getCityList(setCityNameArr); 
@@ -48,6 +56,8 @@ function App() {
           <Route exact path="/login"   >      <LoginPage /> </Route>
           <Route exact path="/signup"  >      <SignUpPage userList={userList} updateUsersList={updateUsersList} /> </Route> 
           <Route exact path="/shopping_lists"><NavBarComp />  <ShoppingListsPage    /> </Route>
+          <Route exact path="/shopping_list"><NavBarComp />  <ShoppingPage    /> </Route>
+
           <Route exact path="/parking"   >    <NavBarComp />  <ParkingPage cities={cityNameArr}/> </Route>
           <Route path="/"                >    <NotFoundPage /> </Route>
         </Switch>

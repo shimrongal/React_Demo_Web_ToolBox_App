@@ -21,7 +21,7 @@ export const getCityList =async setCityNameArr=>{
 }
 
 /**
- *  Return shopping list from Firestore db
+ *  Return shopping list from Firestore db by list name
  * 
  * @param {*} currentListId 
  * @param {*} updateShoppingList 
@@ -30,8 +30,10 @@ export const getCityList =async setCityNameArr=>{
 export const getShoppingListByName= (currentListId, updateShoppingList)=>{
     const tempShoppingItems = [];
     fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListId).collection(currentListId +"-data").get().then((querySnapshot)=>{
-            querySnapshot.forEach(doc => {                
-                tempShoppingItems.push( new ShoppingItemModel(doc.data().itemName, doc.data().itemBrand , doc.data().itemQuantity , doc.data().inCart ));
+            querySnapshot.forEach(doc => {  
+                if (!doc.data().deleted){              
+                    tempShoppingItems.push( new ShoppingItemModel(doc.data().itemName, doc.data().itemBrand , doc.data().itemQuantity , doc.data().inCart ));
+                }
             });     
             updateShoppingList(tempShoppingItems);
         }).catch( (error)=>{
@@ -41,82 +43,115 @@ export const getShoppingListByName= (currentListId, updateShoppingList)=>{
 
 
 /**
- * Return shopping list from Firestore db
- * @param {*} updateShoppingList 
+ * Get List of shopping lists
+ * @param {*} updateShoppingLists 
  */
-export const getAllShoppingListsData=  updateShoppingLists =>{
-    fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
-        querySnapshot.forEach((currentList)=>{
-            console.log("querySnapshot.forEach((currentList)" + currentList);
-
-            fireStoreDb.collection("shopping-lists").doc(currentList.id).collection(currentList.id +"-data").get()
-            .then(querySnapshot => {
-                const tmpShoppingListsArr =[];
-                querySnapshot.forEach(doc => {
-                    console.log(doc.id, " => ", doc.data());
-                    tmpShoppingListsArr.push(doc.data() );
-                });
-                updateShoppingLists(tmpShoppingListsArr);
-    });
-    });
-});
-}
-
-
-
 export const getShoppingLists = updateShoppingLists =>{
-    fireStoreDb.collection("shopping-lists").get().then( querySnapshot=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).get().then( querySnapshot=>{
         const tempShoppingListArr = [];
         querySnapshot.forEach((currentList)=>{
-            console.log("(currentList)" + currentList.id);
-            tempShoppingListArr.push(currentList.id);
-            });
-    
+            //Do not show lists with deleted status 
+            if (!currentList.data().deleted )
+                tempShoppingListArr.push(currentList.id);
+            });   
         updateShoppingLists(tempShoppingListArr) });
 }
-
-
 
 /**
  * Will create entry in Firestore db with ID
  *  The ID Scheme is : name + brand-name 
  * @param {*} shoppingItem 
  */
-export const addShoppingItemToFireStore = (shoppingItem)=>{
-    fireStoreDb.collection("shopping-list").doc(shoppingItem.itemName + "_" + shoppingItem.itemBrand).set({
+export const addShoppingItemToFireStore = (currentListName ,  shoppingItem)=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListName).collection(currentListName+"-data").doc(shoppingItem.itemName+"_"+shoppingItem.itemBrand).set({
         itemName: shoppingItem.itemName,
         itemBrand: shoppingItem.itemBrand,
         itemQuantity: shoppingItem.itemQuantity,
-        inCart:false
+        inCart:false,
+        deleted:false
+
+    }).catch((error)=>{
+        console.error("addShoppingItemToFireStore error : " + error);
+    });
+}
+
+export const saveCheckBoxState= (currentListName, item,   checkBoxStatus)=>{
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(currentListName).collection(currentListName+"-data").doc(item.itemName+"_"+item.itemBrand).update({
+        "inCart" : checkBoxStatus
+    }).catch((error) => {
+        console.error("Error updating document: ", error);
     });
 }
 
 
 /**
- * Will create entry in Firestore db with random id
- * @param {*} shoppingItem 
+ * This function will update the delete attribute/flag on firestore. 
+ * @param {*} listItem 
  */
-export const saveShoppingItem= (shoppingItem)=>{
-    fireStoreDb.collection("shopping-list").add({
-        itemName: shoppingItem.itemName,
-        itemBrand: shoppingItem.itemBrand,
-        itemQuantity: shoppingItem.itemQuantity,
-        inCart:false
+export const deleteShoppingList = async (listItem)=>{
+    await fireStoreDb.collection(firebaseBaseCollectionName).doc(listItem).update({
+        "deleted": true
+    }).then(()=>{
+        console.log( `deleteShoppingList deleted: true`);
+    }).catch((error)=>{
+        console.error("deleteShoppingList error : " + error);
     })
-    .then((docRef) => {
-        //TODO: implement
-        console.log("Document written with ID: ", docRef.id);
-    })
-    .catch((error) => {
-        console.error("Error adding document: ", error);
-    });
 }
 
-export const saveCheckBoxState= ( name , brand,   checkBoxStatus)=>{
-    fireStoreDb.collection("shopping-list").doc(name + "_" + brand).update({
-        "inCart" : checkBoxStatus
+export const deleteShoppingItem = async (listName ,item)=>{
+    await fireStoreDb.collection(firebaseBaseCollectionName).doc(listName).collection(listName+"-data").doc(item.itemName+"_"+item.itemBrand).update({
+        "deleted": true
+    }).then(()=>{
+        console.log( `deleteShoppingItem deleted: true`);
+    }).catch((error)=>{
+        console.error("deleteShoppingItem error : " + error);
     })
-    .catch((error) => {
-        console.error("Error updating document: ", error);
-    });
 }
+
+/**
+ * Automated testing and mocks for firestore
+ * 
+ * THIS IS ONLY FOR TESTING DO NOT USE IT ON WORKING DB 
+ * 
+ */
+
+/**
+ * Reset Shopping lists delete attribute
+ */
+ export const resetDeletedListsMOCK= ()=>{
+
+    const tempShoppingListArr = [];
+    fireStoreDb.collection(firebaseBaseCollectionName).get().then( querySnapshot=>{
+        querySnapshot.forEach((currentList)=>{
+            tempShoppingListArr.push(currentList.id);
+        });
+        tempShoppingListArr.forEach(item=>{
+            fireStoreDb.collection("shopping-lists").doc(item).update({
+                "deleted": false
+            });
+        });
+    });
+
+ }
+
+ export const resetDeletedListItemsMOCK= async()=>{
+    const tempShoppingListArr = [];
+    
+    await fireStoreDb.collection(firebaseBaseCollectionName).get().then( querySnapshot=>{
+        querySnapshot.forEach((currentList)=>{
+            tempShoppingListArr.push(currentList.id);
+        });
+    });
+    tempShoppingListArr.forEach(listItem=>{
+        fireStoreDb.collection(firebaseBaseCollectionName).doc(listItem).collection(listItem+"-data").get().then(  res =>{
+                res.docs.forEach( item=>{
+                    fireStoreDb.collection(firebaseBaseCollectionName).doc(listItem).collection(listItem+"-data").doc(item.data().itemName+"_"+item.data().itemBrand).update({
+                        "deleted": false
+                    }).catch(error=>{
+                        console.error("resetDeletedListItemsMOCK error : " + error);
+                    });
+            });
+        });
+    });
+
+ }

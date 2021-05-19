@@ -8,18 +8,20 @@ import { Redirect } from "react-router";
 function ShoppingListsPage() {
     
     const [shoppingLists , updateShoppingLists] = useState();
-    const [chosenList ,setChosenList] = useState();
 
-
-    const getLists = shoppingLists ? shoppingLists.map((item)=>{
-        return <ShoppingListItem item={item} setChosenList={setChosenList}  />}) : "";
-   
-   
-    useEffect(()=>{
-    getShoppingLists(updateShoppingLists);
-    },[]);
-
+    const [isItemDeleted , setDeletedItem] = useState(true);
+    const getLists = shoppingLists ? shoppingLists.map((item,index)=>{
+        return <ShoppingListItem key={item+ "_" + index} item={item} setDeletedItem={setDeletedItem} />} ) : "";
+    
     const {currentUser} = useContext(AuthContext);
+
+    useEffect(()=>{
+        if (isItemDeleted){
+            getShoppingLists(updateShoppingLists);
+            setDeletedItem(false);
+        }
+
+    },[isItemDeleted]);
 
     if (typeof currentUser ==='undefined' || currentUser ===null) {
       return <Redirect to="/login" />;
@@ -32,12 +34,8 @@ function ShoppingListsPage() {
                 <hr></hr>
             </div>
             {getLists}
-        </div>
-        
+        </div>    
     </div>)
-
 }
-
-
 
 export default ShoppingListsPage
