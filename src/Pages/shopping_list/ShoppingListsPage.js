@@ -7,23 +7,30 @@ import ShoppingListItem from "../../components/shopping_item_comp/ShoppingListIt
 import { AuthContext } from "../../utils/Auth";
 import { Redirect } from "react-router";
 
+import NewShoppingCartModal from "../../components/modals/NewShoppingCartModal";
+import { MdAddShoppingCart } from "react-icons/md";
+
+
 function ShoppingListsPage() {
     
-    const [shoppingLists , updateShoppingLists] = useState();
+    const [showAddNewCartModal , updateAddNewCartModal] = useState(false);
 
-    const [isItemDeleted , setDeletedItem] = useState(true);
+    const [shoppingLists , updateShoppingLists] = useState();
+    //const [isItemDeleted , setDeletedItem] = useState(true);
+    const [shouldUpdateList , setUpdateList] = useState(true);
+
     const getLists = shoppingLists ? shoppingLists.map((item,index)=>{
-        return <ShoppingListItem key={item+ "_" + index} item={item} setDeletedItem={setDeletedItem} />} ) : "";
+        return <ShoppingListItem key={item+ "_" + index} item={item} setDeletedItem={setUpdateList} />} ) : "";
     
     const {currentUser} = useContext(AuthContext);
 
     useEffect(()=>{
-        if (isItemDeleted){
+        if (shouldUpdateList){
             getShoppingLists(updateShoppingLists);
-            setDeletedItem(false);
+            setUpdateList(false);
         }
 
-    },[isItemDeleted]);
+    },[shouldUpdateList]);
 
     if (typeof currentUser ==='undefined' || currentUser ===null) {
       return <Redirect to="/login" />;
@@ -33,11 +40,18 @@ function ShoppingListsPage() {
         <NavBarComp />
         <div id="p-shopping-lists-container">
             <div id="p-shopping-list-header-container">
-                <p>Current Shopping Lists</p>
-                <hr></hr>
+                <p>Shopping Carts</p>
+                <span onClick={()=>updateAddNewCartModal(true)}>
+                     <MdAddShoppingCart />
+               </span>
+                
             </div>
+            <hr></hr>
             {getLists}
-        </div>    
+        </div> 
+
+        <NewShoppingCartModal show={showAddNewCartModal} onClose={()=>updateAddNewCartModal(false)} setUpdateList={()=>setUpdateList(true)} />
+
     </div>)
 }
 
