@@ -64,6 +64,21 @@ export const getShoppingLists = updateShoppingLists =>{
 }
 
 /**
+ * Will Add new collection to Firestore db 
+ *  The ID Scheme is : name + brand-name 
+ * @param {*} shoppingItem 
+ */
+export const addShoppingCartItemToFireStore= (cartName)=>{
+
+    fireStoreDb.collection(firebaseBaseCollectionName).doc(cartName).set({
+        "deleted":false
+    }).catch(error=>{
+        console.error("addShoppingCartItemToFireStore Error : " + error);
+    })
+}
+
+
+/**
  * Will create entry in Firestore db with ID
  *  The ID Scheme is : name + brand-name 
  * @param {*} shoppingItem 

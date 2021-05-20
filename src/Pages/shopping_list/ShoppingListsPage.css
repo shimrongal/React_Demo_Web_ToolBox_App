@@ -1,33 +1,45 @@
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400');
 
 #p-shopping-lists-container{
-    width: 50%;
-    margin: 1% 25%;
+    width: 80%;
+    margin: 1% 10%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 5%;
 }
+#p-shopping-list-header-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
 
 #p-shopping-list-header-container p{
-    padding: 5px 20px;
+    display: inline;
+    padding: 5px;
+    display: inline;
     color: #0B5AA2;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 30px;
     text-align: left;
 }
 
+#p-shopping-list-header-container svg{
+    display: inline;
+    margin: 10px 5px 0 0;
+    width: 40px;
+    height: 40px;
+}
 
-
-
-#p-shopping-list-header-container hr{
-    width: 25%;
+ hr{
+    width: 100%;
     align-items: left;
     margin: 3% 0;
     border: 1px solid #0B5AA2;
 }
 
-#p-shopping-list-body-container .p-shopping-list-body-content{
+#p-shopping-list-body-container {
+
     padding: 2% 0;
     display: grid;
     grid-template-columns: 10fr 1fr;
@@ -35,20 +47,23 @@
     grid-gap: 10px;
     border: 1px solid transparent;
     cursor: pointer;  
+    
 }
 
 
 
-#p-shopping-list-body-container .p-shopping-list-body-content:hover{
+#p-shopping-list-body-container:hover{
+    
     border: gainsboro 1px solid;
     border-radius: 5px;
 }
-#p-shopping-list-body-container .p-shopping-list-body-content  span{
-
+#p-shopping-list-body-container  a{
     text-align: left;
+    border: 1px solid #0B5AA2;
+
 }
 
-#p-shopping-list-body-container .p-shopping-list-body-content  span::before{
+#p-shopping-list-body-container span::before{
     content: "*";
     margin: 0 5px;
 
@@ -57,7 +72,16 @@
 .p-list-item-title{
   font-family: 'fredericka the great', cursive;
   font-weight: 500;
-	font-size: 2.5rem;
-	color: rgba(100, 58, 122, .8);
+  font-size: 2.5rem;
+  color: rgba(100, 58, 122, .8);
 
 }
+
+.icon-remove-cart{
+        font-weight: 500;
+        font-size: 2.5rem;
+        color: gray;
+        background-color: lightgray;
+}
+
+
