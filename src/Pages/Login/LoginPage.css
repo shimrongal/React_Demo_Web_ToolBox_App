@@ -44,12 +44,12 @@ label{
 
 
 
-#p-login-container .p-col-info p h1  {
+#p-login-container .p-col-info  h1  {
     font-family: 'Six Caps', sans-serif;
     font-size: 50px;
 }
 
-#p-login-container .p-col-info p p {
+#p-login-container .p-col-info  p {
     font-family: 'Merriweather', serif;
     font-weight: bolder;
 }

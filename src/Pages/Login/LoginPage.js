@@ -50,23 +50,17 @@ const LoginPage = () => {
   else {
 
   return (<div id="p-login-container">
-      <div className="p-col-info">
-        <p>
+      <div className="p-col-info">        
           <h1>Welcome to ToolBox App</h1>
-          <p> This app should be your best friend your security and your BOSS ;) 
+          <p> This app should be your best friend your security and your BOSS ;) </p>
            <p>App Main Features are:</p>
             <p>Current weather (by open weather api).</p>
             <p>Alerts from Pikod Aoref.</p>
             <p>Save your spot and give you direction to get back to it.</p>
             <p>Show all near Parking Lots.</p>
             <p>Shared shopping list.</p>  
-        
-          </p>
           <h6>Developed by GS-Dev </h6>
-
-        </p>
       </div>
-
 
       <div id="p-login">
         <h1>Log in</h1>
