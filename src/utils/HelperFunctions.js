@@ -3,6 +3,12 @@ import ShoppingItemModel from '../models/ShoppingItemModel';
 
 import firebase from "../utils/FirebaseConfig";
 
+/**
+ *  Created by Gal Shimron 
+ *  This class hold helper function for the main app
+ */
+
+
 const firebaseBaseCollectionName = "shopping-lists";
 
 let fireStoreDb = firebase.firestore();

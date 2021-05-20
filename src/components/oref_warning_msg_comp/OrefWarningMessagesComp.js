@@ -1,8 +1,9 @@
-import OrefWarringMessageComp from "./OrefWarringMessageComp";
+import OrefWarningMessageComp from "./OrefWarningMessageComp";
+
 
 function OrefWarringMessagesComp({alerts}) {
     const handleAlert = alerts.map( (item,index) =>{
-       return <OrefWarringMessageComp  key={item.data +"_" + item.alertDate} item={item} index={index}/>
+       return <OrefWarningMessageComp  key={item.data +"_" + item.alertDate} item={item} index={index}/>
     });
     return(<div>{handleAlert}</div>)
 }

@@ -26,7 +26,7 @@ function ParkingAddressModal({show,  onClose,whatToShow, setMapUrl, cities , par
             axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI`).then((results)=>{
                 setMapUrl(`https://www.google.com/maps/embed/v1/search?key=AIzaSyCNKfsXeTiMfS66RSVSMuYv5BEQVw5ohbI&zoom=16&center=${results.data.results[0].geometry.location.lat},${results.data.results[0].geometry.location.lng}&q=parking near ${results.data.results[0].formatted_address}`);
             }).catch((error)=>{
-                console.log("error https://maps.googleapis.com/maps/api/geocode/json?address= : "+error);
+                console.error("error https://maps.googleapis.com/maps/api/geocode/json?address= : "+error);
             });
         }
         clearInputs()

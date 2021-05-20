@@ -2,9 +2,9 @@ import './HomePage.css';
 import { AuthContext } from "../../utils/Auth";
 import { Redirect } from 'react-router';
 import { useContext, useEffect, useState } from 'react';
-import WeatherComp from '../../components/WeatherComp';
-import OrefWarringMessagesComp from '../../components/OrefWarringMessagesComp';
+import OrefWarningMessagesComp from '../../components/oref_warning_msg_comp/OrefWarningMessagesComp';
 import { orefWarningMessagesManager } from '../../utils/OrefWarningMessagesManager';
+import WeatherComp from '../../components/weather_comp/WeatherComp';
 
 
 /**
@@ -33,7 +33,7 @@ const HomePage = ({weatherObject}) => {
   return (
     <div >
       {typeof weatherObject !== 'undefined' ? <WeatherComp weatherObject={weatherObject}   /> : <div>No Weather Data yet </div> }
-      {typeof currentOrefAlerts    !== 'undefined' ? <OrefWarringMessagesComp alerts={currentOrefAlerts} /> : <div>No Alerts</div> }
+      {typeof currentOrefAlerts    !== 'undefined' ? <OrefWarningMessagesComp alerts={currentOrefAlerts} /> : <div>No Alerts</div> }
     </div>
   );
 };

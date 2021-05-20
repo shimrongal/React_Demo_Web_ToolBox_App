@@ -1,4 +1,4 @@
-import "../pages/shopping_list/ShoppingPage.css"
+import "../../pages/shopping_list/ShoppingPage.css"
 
 function  ShoppingItemListHeaderComp() {
     

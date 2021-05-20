@@ -2,7 +2,12 @@ import { Link } from "react-router-dom";
 import "../../pages/shopping_list/ShoppingListsPage.css";
 import { deleteShoppingList } from "../../utils/HelperFunctions";
 
-function ShoppingListItem({item , setDeletedItem}) {
+import {  MdRemoveShoppingCart } from "react-icons/md";
+
+import { FaBeer } from 'react-icons/fa';
+
+
+function ShoppingListItemComp({item , setDeletedItem}) {
 
     const handleClick = async ()=>{
         await deleteShoppingList(item);
@@ -16,7 +21,9 @@ function ShoppingListItem({item , setDeletedItem}) {
                         > <div id="p-shopping-list-body-container">
                             <div className="p-shopping-list-body-content dropdown title" >
                                 <span className="p-list-item-title">{item}</span>
-                                <i id={item} className="fa fa-angle-right" > </i>                         
+                                <i id={item} className="fa fa-angle-right" > </i>   
+                                <FaBeer /> 
+                                <MdRemoveShoppingCart />                     
                             </div>
                         </div>
             </Link>
@@ -24,4 +31,4 @@ function ShoppingListItem({item , setDeletedItem}) {
             </div>)
 }
 
-export default ShoppingListItem;
+export default ShoppingListItemComp;

@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+/**
+ *  Created by Gal Shimron  20/5/2021
+ *  This class will manage Pikod Aoref API functions
+ */
+
+
 export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
      axios.get('http://www.oref.org.il/WarningMessages/History/AlertsHistory.json').then(res=>{
         const alertArr = []
@@ -8,7 +14,7 @@ export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
         }
         updateOrefAlerts(alertArr);
     }).catch(error=>{
-        console.log("OrefWarningMessagesManager error : " + error)  
+        console.error("OrefWarningMessagesManager error : " + error)  
     });
     
 }

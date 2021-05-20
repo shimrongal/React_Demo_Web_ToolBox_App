@@ -6,6 +6,13 @@ import { AuthContext } from '../../utils/Auth';
 import { useContext } from 'react';
 import { Redirect } from 'react-router';
 
+/**
+ *  Created by Gal Shimron  
+ *  This class will handle Parking Feature
+ *  
+ */
+
+
 function ParkingPage({cities}) {
 
     const [whatToShow,setWhatToShow] = useState("");

@@ -1,7 +1,15 @@
+
+
 import { useContext } from "react";
 import NavBarComp from "../../components/NavBarComp";
 import { AuthContext } from "../../utils/Auth";
 
+
+/**
+ *  Created by Gal Shimron  19/5/20
+ *  This class will handle All 404 Error code
+ *  
+ */
 
 function  NotFoundPage() {
 

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import app from "../utils/FirebaseConfig";
 
+/**
+ *  Created by Gal Shimron 
+ *  This class will handle firebase auth
+ */
+
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {

@@ -1,9 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { getShoppingLists } from "../../utils/HelperFunctions";
 import 'font-awesome/css/font-awesome.min.css';
-import "./ShoppingListsPage.css";import ShoppingListItem from "../../components/shopping_item_comp/ShoppingListItem";
+import "./ShoppingListsPage.css";import ShoppingListItemComp from "../../components/shopping_item_comp/ShoppingListItemComp";
 import { AuthContext } from "../../utils/Auth";
 import { Redirect } from "react-router";
+
+
+/**
+ *  Created by Gal Shimron  
+ *  This class will handle The main list of shopping lists
+ *  
+ */
+
 
 function ShoppingListsPage() {
     
@@ -11,7 +19,7 @@ function ShoppingListsPage() {
 
     const [isItemDeleted , setDeletedItem] = useState(true);
     const getLists = shoppingLists ? shoppingLists.map((item,index)=>{
-        return <ShoppingListItem key={item+ "_" + index} item={item} setDeletedItem={setDeletedItem} />} ) : "";
+        return <ShoppingListItemComp key={item+ "_" + index} item={item} setDeletedItem={setDeletedItem} />} ) : "";
     
     const {currentUser} = useContext(AuthContext);
 

@@ -1,6 +1,6 @@
-import "../components/OrefWarrnigMessageComp.css"
+import "./OrefWarningMessageComp.css"
 
-function OrefWarringMessageComp({item , index}) {
+function OrefWarningMessageComp({item , index}) {
 
     const animDelay = {
         animationDelay : index * 0.5 +"s"
@@ -14,4 +14,4 @@ function OrefWarringMessageComp({item , index}) {
     </ul> 
 }
 
-export default OrefWarringMessageComp;
+export default OrefWarningMessageComp;

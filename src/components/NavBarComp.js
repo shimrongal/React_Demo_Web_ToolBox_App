@@ -16,7 +16,7 @@ function NavBarComp() {
   const signOut = async path=>{
     await firebaseAuthManager.auth().signOut().then(()=>{
     }).catch( error =>{
-      console.log("Sign out error : " +console.error() ) ;
+      console.error("Sign out error : " +console.error() ) ;
     });
     return <Redirect to={path} replace/> ;
   }

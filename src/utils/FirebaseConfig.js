@@ -3,6 +3,11 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
+/**
+ *  Created by Gal Shimron 
+ *  This class will initiate firebase object 
+ */
+
 const firebaseManger = firebase.initializeApp({
     apiKey: "AIzaSyA_NrBrptgCAabi1YGFwWPkrRXJRuz7eZM",
     authDomain: "toolbox-94ef9.firebaseapp.com",

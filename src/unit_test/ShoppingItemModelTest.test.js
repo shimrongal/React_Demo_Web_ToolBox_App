@@ -1,6 +1,12 @@
 import ShoppingItemModel from "../models/ShoppingItemModel"
 
 
+/**
+ *  Created by Gal Shimron  20/5/2021
+ *  This class will handle tests for Shopping item model
+ */
+
+
 test('create shopping item instance' , ()=>{
     const shoppingItem = new ShoppingItemModel("itemName", "itemBrand" , 5 , false );
     expect(shoppingItem).toBeDefined();
