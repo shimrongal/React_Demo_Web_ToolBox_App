@@ -53,12 +53,18 @@ function ParkingPage({cities}) {
     }
     
     const {currentUser} = useContext(AuthContext);
-
     if (typeof currentUser ==='undefined' || currentUser ===null) {
-      return <Redirect to="/login" />;
+        return <Redirect to="/login" />;
     }
+
+    if (mapUrl !== ""){
+        document.getElementById("p-loader").className = "";
+    }
+
+
     return(<div id="p-parking-page-container">
             {mapUrl !== "" ? 
+            
              <iframe
                 width="800"
                 height="600"
