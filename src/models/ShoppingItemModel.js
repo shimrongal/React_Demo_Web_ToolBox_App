@@ -10,11 +10,33 @@
 class ShoppingItemModel{
 
     constructor(itemName, itemBrand, itemQuantity ,inCart=false){
+        if (inCart === "false" ){
+            this.inCart =false;
+        }
+        else if (inCart === "true" ){
+            this.inCart =true;
+        }
+        else {
+            this.inCart = inCart;
+        }
+        if (typeof itemQuantity === 'string'){
+            let currentQuantity = parseInt(itemQuantity);
+            if (isNaN(currentQuantity) || currentQuantity.toString().length !== itemQuantity.length) { 
+                this.itemQuantity = -1;
+                //TODO: Handle this Case;
+                console.error("Bed input for itemQuantity");
+            }
+            else {
+                this.itemQuantity = currentQuantity
+            }
+        }
+        else {            
+            this.itemQuantity = itemQuantity;
+        }
+      
         this.itemId = itemName+"_"+itemBrand;
         this.itemName = itemName;
         this.itemBrand = itemBrand;
-        this.itemQuantity = itemQuantity;
-        this.inCart = inCart;
     }
 
 }
