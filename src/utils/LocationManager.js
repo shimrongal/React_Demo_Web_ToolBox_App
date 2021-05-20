@@ -23,7 +23,6 @@ export const getCurrentLocation = (updateParkingLatLng , updateShowParkingAddres
                 console.log("error https://maps.googleapis.com/maps/api/geocode/json?address= : "+error);
             });
         }
-        document.getElementById("p-loader").className = "";
     }
 
     function error() {

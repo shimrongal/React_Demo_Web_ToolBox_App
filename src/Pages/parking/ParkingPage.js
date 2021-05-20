@@ -44,9 +44,15 @@ function ParkingPage({cities}) {
         getCurrentLocation(updateCurrentLatLng ,updateShowParkingAddressModal , "findParkingLot" , setMapUrl,setWhatToShow , parkingLatLng );
     }
 
+    if (mapUrl !== ""){
+        document.getElementById("p-loader").className = "";
+    }
+
+
     return(<div id="p-parking-page-container">
             <NavBarComp /> 
             {mapUrl !== "" ? 
+            
              <iframe
                 width="800"
                 height="600"
