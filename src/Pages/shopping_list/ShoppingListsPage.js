@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { getShoppingLists } from "../../utils/HelperFunctions";
 import 'font-awesome/css/font-awesome.min.css';
 import "./ShoppingListsPage.css";
-import NavBarComp from "../../components/NavBarComp";
 import { AuthContext } from "../../utils/Auth";
 import { Redirect } from "react-router";
 

@@ -1,13 +1,54 @@
 /*Created by Gal Shimron on 9/05/2021. */
 
-/**
-* Create a Table only with css using flex box 
-*
-**/
+
+
 #p-shopping-list-container{
-    padding: 0;
-    margin: 0 20%;
+    width: 70%;
+    margin: 1% 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
 }
+
+#p-shopping-list-container ul{
+    padding: 0;
+
+}
+
+#p-shopping-list-container div:first-child{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#p-shopping-list-container p{
+    margin: 0;
+    display: inline;
+    color: #0B5AA2;
+    font-weight: bold;
+    font-size: 30px;
+    text-align: left;
+}
+
+#p-shopping-list-container svg{
+    font-weight: 500;
+    font-size: 2.5rem;
+    margin: 5px;
+    color: white;
+    background-color: lightblue;
+    border-radius: 5px;
+    border: solid;
+
+}
+
+#p-shopping-list-container hr{
+    width: 100%;
+    align-items: left;
+    margin: 3% 0;
+    border: 1px solid #0B5AA2;
+}
+
 
 .list-border-style-shopping-header{
     margin-top: 2%;

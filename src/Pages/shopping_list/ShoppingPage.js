@@ -5,6 +5,9 @@ import NewShoppingItemModal from '../../components/modals/NewShoppingItemModal';
 import { useLocation } from 'react-router';
 import { getShoppingListByName } from '../../utils/HelperFunctions';
 import ShoppingItemListHeaderComp from '../../components/shopping_item_comp/ShoppingItemListHeaderComp';
+import { MdAddShoppingCart } from 'react-icons/md';
+import "./ShoppingPage.css";
+
 
 /**
  * Created by Gal Shimron on 9/05/2021.
@@ -35,12 +38,21 @@ function ShoppingPage() {
   const getShoppingItems = shoppingList ? shoppingList.map( (item , index)=>{
      return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart} setItemDeleted={setItemDeleted} />  }) : "";
 
-  return(<div>
-        <ul id="p-shopping-list-container" >
+  return(<div id="p-shopping-list-container">        
+            <div id="p-list-header-container">
+                <p>{currentListName}</p>
+                <span onClick={()=>updateAddNewItemModal(true)}>
+                     <MdAddShoppingCart />
+               </span>
+                
+            </div>
+            <hr></hr>
+
+
+        <ul  >
           <ShoppingItemListHeaderComp />
           {shoppingList ? getShoppingItems : ""}     
         </ul>  
-          <button onClick={()=>updateAddNewItemModal(true)}>Add new Item</button>
           <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentListName={currentListName} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
         </div>)
     
