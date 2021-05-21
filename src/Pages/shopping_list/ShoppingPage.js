@@ -15,7 +15,7 @@ import { getShoppingListByName } from '../../utils/HelperFunctions';
  * @param {*} params 
  * 
  * 
- * TODO:
+ * 
  *  
  */
 
@@ -39,9 +39,10 @@ function ShoppingPage() {
      return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart} setItemDeleted={setItemDeleted} />  }) : "";
 
   return(<div>
-          <NavBarComp />
+        <ul>
           <ShoppingItemListHeaderComp />
-          {shoppingList ? getShoppingItems : ""}       
+          {shoppingList ? getShoppingItems : ""}     
+        </ul>  
           <button onClick={()=>updateAddNewItemModal(true)}>Add new Item</button>
           <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentListName={currentListName} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
         </div>)

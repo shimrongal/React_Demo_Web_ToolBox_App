@@ -20,8 +20,7 @@ function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) 
             saveCheckBoxState(currentListName,  item, !isCheckedItem)
             updateCheckItem(!isCheckedItem)   
         }
-
-    return(<ul className="shopping-item-row">
+    return(<ul className="display-flex-row"> 
                 <li className="shopping-item-col">
                     <h5>{item.itemName}</h5>
                  </li>
@@ -34,9 +33,7 @@ function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) 
                 <li className="shopping-item-checkbox-container">
                     <input className="shopping-item-checkbox"  type="checkbox" checked={isCheckedItem} onChange={()=>handleCheckBoxChange()} />  
                 </li> 
-                <li className="shopping-item-checkbox-container" onClick={handleTrashIconClick}>
-                     <i id={item.itemName+ "_" +item.itemBrand} className="fa fa-angle-right" > </i>                         
-                </li> 
+
         
         {/* TODO: create data base of item and corresponding images for better look and feal
         {imgUrl ? <img className="shopping-item-icon" src="" alt=""> </img> : <div></div>} */}
