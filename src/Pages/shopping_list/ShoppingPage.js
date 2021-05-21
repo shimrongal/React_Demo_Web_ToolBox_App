@@ -9,8 +9,12 @@ import ShoppingItemListHeaderComp from '../../components/shopping_item_comp/Shop
 /**
  * Created by Gal Shimron on 9/05/2021.
  * 
- * Shopping page 
- *  This class will handle Shopping list item
+ * Shopping page
+ * 
+ * @param {*} params 
+ * 
+ * 
+ * 
  *  
  * 
  */
@@ -35,9 +39,11 @@ function ShoppingPage() {
   const getShoppingItems = shoppingList ? shoppingList.map( (item , index)=>{
      return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart} setItemDeleted={setItemDeleted} />  }) : "";
 
-  return(<div>          
+  return(<div>
+        <ul>
           <ShoppingItemListHeaderComp />
-          {shoppingList ? getShoppingItems : ""}       
+          {shoppingList ? getShoppingItems : ""}     
+        </ul>  
           <button onClick={()=>updateAddNewItemModal(true)}>Add new Item</button>
           <NewShoppingItemModal show={showAddNewItemModal} onClose={()=>updateAddNewItemModal(false)} currentListName={currentListName} currentShoppingList={shoppingList} updateShoppingList={updateShoppingList} ></NewShoppingItemModal>
         </div>)
