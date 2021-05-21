@@ -5,6 +5,7 @@ import { getCurrentLocation  } from "../../utils/LocationManager";
 import { AuthContext } from '../../utils/Auth';
 import { useContext } from 'react';
 import { Redirect } from 'react-router';
+import ParkingButtonsComp from '../../components/ParkingPageButtonsComp';
 
 /**
  *  Created by Gal Shimron  
@@ -63,28 +64,29 @@ function ParkingPage({cities}) {
 
 
     return(<div id="p-parking-page-container">
-            {mapUrl !== "" ? 
-            
-             <iframe
-                width="800"
-                height="600"
-                style={{border:0}}
-                loading="lazy"
-                allowFullScreen
-                src={mapUrl}>
-            </iframe>
-            :
-            <div className="title-container">
-                <h1 className="cyber-text">Would you like to park ?</h1>
-                <img src="./park_icon.png"  alt="parking_lot"/>
-            </div>}    
-            
-            <div id="p-loader" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 
-            <div className="p-parking-page-button-container">
-                <button onClick={()=>onMainParkingButtonClick()}>{mainBtnText}</button>
-                <button onClick={()=>onFindParkingButtonClick()}>Find parking lot</button>
+            {mapUrl !== "" ? 
+            <div className="p-parking-page-map-content-container">
+                <ParkingButtonsComp mainBtnText={mainBtnText} onMainParkingButtonClick={onMainParkingButtonClick} onFindParkingButtonClick={()=>onFindParkingButtonClick()}  />
+                <iframe
+                    width="800"
+                    height="600"
+                    style={{border:0}}
+                    loading="lazy"
+                    allowFullScreen
+                    src={mapUrl}>
+                </iframe>
             </div>
+            :
+            <div>
+                <div className="title-container">
+                    <h1 >Would you like to park ?</h1>
+                    <img src="./park_icon.png"  alt="parking_lot"/>
+                </div>
+                <ParkingButtonsComp mainBtnText={mainBtnText} onMainParkingButtonClick={onMainParkingButtonClick} onFindParkingButtonClick={()=>onFindParkingButtonClick()}  />
+            </div>
+            }             
+            <div id="p-loader" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
             {showParkingAddressModal ? 
             <ParkingAddressModal show={showParkingAddressModal}
                                  onClose={()=>  updateShowParkingAddressModal(false)}

@@ -36,7 +36,7 @@ function ParkingAddressModal({show,  onClose,whatToShow, setMapUrl, cities , par
     const getOptionsList = cities.map((item, index) => <OptionComp item={item} /> );
     
     return(<Modal show={show} onHide={onClose} size="lg" >
-        <Modal.Header closeButton>
+        <Modal.Header >
              <Modal.Title>Parking Address</Modal.Title>
         </Modal.Header>
         <Modal.Body>

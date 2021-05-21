@@ -19,7 +19,7 @@ function NewShoppingCartModal({show, onClose ,setUpdateList}) {
 
 
 return(<Modal show={show} onHide={onClose} size="lg" >
-            <Modal.Header closeButton>
+            <Modal.Header >
                 <Modal.Title>New Shopping Cart</Modal.Title>
             </Modal.Header>
             <Modal.Body>

@@ -1,6 +1,7 @@
 /*Created by Gal Shimron on 9/05/2021. */
 body {
   background-color: lightskyblue !important;
+    color: white;
 }
 
 
@@ -11,10 +12,11 @@ body {
 
 button{
   min-width: 90px;
-  color: black !important;
-  background-color: cornsilk !important;
+  color: white !important;
+  background-color: blue !important;
+  border: darkblue 5px groove;
   border-radius: 5px !important;
-  padding: 2px 5px;
+  padding: 0 5px;
   font-family: 'Pacifico', cursive;
 
 }

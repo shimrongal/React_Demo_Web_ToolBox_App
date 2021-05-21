@@ -25,7 +25,7 @@ function NewShoppingItemModal({show, onClose, currentListName , currentShoppingL
     }
 
 return(<Modal show={show} onHide={onClose} size="lg" >
-            <Modal.Header closeButton>
+            <Modal.Header >
                 <Modal.Title>New Shopping Item</Modal.Title>
             </Modal.Header>
             <Modal.Body>

@@ -12,13 +12,11 @@ function ShoppingListItemComp({item , setDeletedItem}) {
         setDeletedItem(true)
     }
 
-    return(<div id="p-shopping-list-body-container"> 
-            <div >
+    return(<div className="p-shopping-list-body-container"> 
                 <Link  to={{ pathname: "/shopping_list",  data: item }} >
-                    <span className="p-list-item-title">{item}</span>
+                    <div className="p-list-item-div p-list-item-title">{item}</div>
                 </Link>
-                <span onClick={handleClick}> <MdRemoveShoppingCart className="icon-remove-cart"/> </span>
-            </div>
+                <div className="icon-container" onClick={handleClick}> <MdRemoveShoppingCart className="icon-remove-cart"/> </div>
         </div>)
 }
 

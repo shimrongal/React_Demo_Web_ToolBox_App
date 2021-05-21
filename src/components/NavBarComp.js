@@ -31,7 +31,7 @@ function NavBarComp() {
         <Nav.Link as={Link}  to="/shopping_lists">Shopping list</Nav.Link>
         <Nav.Link as={Link}  to="/parking">Parking</Nav.Link>
       </Nav>
-      <Button onClick={()=>signOut("/login")}>Sign out</Button>
+      <button onClick={()=>signOut("/login")}>Sign out</button>
     </Navbar.Collapse>
   </Navbar>)
 }
