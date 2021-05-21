@@ -13,10 +13,6 @@ import ShoppingItemListHeaderComp from '../../components/shopping_item_comp/Shop
  * 
  * @param {*} params 
  * 
- * 
- * 
- *  
- * 
  */
 
 
@@ -40,7 +36,7 @@ function ShoppingPage() {
      return <ShoppingItemComp key={item + index} currentListName={currentListName} item={item} isChecked={item.inCart} setItemDeleted={setItemDeleted} />  }) : "";
 
   return(<div>
-        <ul>
+        <ul id="p-shopping-list-container" >
           <ShoppingItemListHeaderComp />
           {shoppingList ? getShoppingItems : ""}     
         </ul>  

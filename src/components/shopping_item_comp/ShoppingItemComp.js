@@ -20,7 +20,7 @@ function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) 
             saveCheckBoxState(currentListName,  item, !isCheckedItem)
             updateCheckItem(!isCheckedItem)   
         }
-    return(<ul className="display-flex-row"> 
+    return(<ul className="display-flex-row list-border-style-shopping-content"> 
                 <li className="shopping-item-col">
                     <h5>{item.itemName}</h5>
                  </li>

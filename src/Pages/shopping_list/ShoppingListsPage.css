@@ -30,6 +30,8 @@
     color: white;
     background-color: lightblue;
     border-radius: 5px;
+    border: solid;
+
 }
 
  hr{
@@ -42,11 +44,6 @@
 .p-shopping-list-body-container {
     display: flex ;
     justify-content: space-between;
-    height: fit-content;
-    display: grid;
-    grid-template-columns: 10fr 1fr;
-    font-size: 13px;
-    grid-gap: 10px;
     border: 1px solid transparent;
     cursor: pointer;  
 
@@ -54,7 +51,6 @@
 }
 
 .p-shopping-list-body-container:hover{
-    
     border: gainsboro 1px solid;
     border-radius: 5px;
 }
@@ -76,10 +72,8 @@
   color: white;
   text-overflow: clip;
   padding: 10px 0;
+  margin-left: 10px;
 
-}
-.icon-container{
-    margin: 25% 0;
 }
 
 
@@ -88,7 +82,9 @@
         font-size: 2.5rem;
         color: white;
         background-color: lightblue;
+        border: solid;
         border-radius: 5px;
+        margin: 50% 10px 50% 0;
 }
 
 

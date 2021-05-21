@@ -4,16 +4,28 @@
 * Create a Table only with css using flex box 
 *
 **/
-.shopping-item-row{
-    margin: 1% 5%;
-    display: flex;
-    justify-content: center;
-    border: double 5px black;
+#p-shopping-list-container{
+    padding: 0;
+    margin: 0 20%;
 }
 
-/* End of table */
-
-.shopping-item-row > dd{
-    margin: 0 8%;
+.list-border-style-shopping-header{
+    margin-top: 2%;
+    color: white;
+    background-color: darkblue;
+    border: black 5px double;
+    border-radius: 5px;
 
 }
+
+.list-border-style-shopping-content{
+    border: 1px solid transparent;
+    cursor: pointer;  
+}
+
+.list-border-style-shopping-content:hover{
+    
+    border: gainsboro 1px solid;
+    border-radius: 5px;
+}
+
