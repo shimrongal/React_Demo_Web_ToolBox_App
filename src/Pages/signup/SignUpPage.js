@@ -1,9 +1,10 @@
 import "./SignUpPage.css"
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
 import {  Col, Form } from "react-bootstrap";
-import { withRouter } from "react-router";
+import { Redirect, withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 import UserModel from "../../models/UserModel";
+import { AuthContext } from "../../utils/Auth";
 
 
 /**
@@ -16,7 +17,7 @@ import UserModel from "../../models/UserModel";
 
 
 
-const SignUpPage = ({ history , userList, updateUsersList}) => {
+const SignUpPage = ({  userList, updateUsersList}) => {
   
   const handleSignUp = useCallback(async event => {
     event.preventDefault();
@@ -33,6 +34,12 @@ const SignUpPage = ({ history , userList, updateUsersList}) => {
       alert(error);
     }
   });
+
+  const { currentUser } = useContext(AuthContext);
+
+  if (currentUser) {
+    return <Redirect to="/" />;
+  }
 
   return (
     <div id="p-sign-in">

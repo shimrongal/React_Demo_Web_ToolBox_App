@@ -1,4 +1,5 @@
 /*Created by Gal Shimron on 9/05/2021. */
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 
 
 
@@ -26,9 +27,10 @@
     margin: 0;
     display: inline;
     color: #0B5AA2;
-    font-weight: bold;
-    font-size: 30px;
+    font-size: 50px;
     text-align: left;
+    font-family: 'Six Caps', sans-serif;
+
 }
 
 #p-shopping-list-container svg{

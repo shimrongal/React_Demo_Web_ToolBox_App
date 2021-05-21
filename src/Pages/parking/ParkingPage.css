@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 
 .p-parking-page-button-container{
     width: 30%;
@@ -37,7 +38,9 @@
     margin-top: 15px;
     max-width: 100%;
     max-height: 100%;
-    font-family: 'Itim', cursive;
+    font-size: 50px;
+    font-family: 'Six Caps', sans-serif;
+    
 }
 
 #p-parking-page-container .title-container > img{

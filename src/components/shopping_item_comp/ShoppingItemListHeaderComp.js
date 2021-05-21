@@ -14,6 +14,9 @@ function  ShoppingItemListHeaderComp() {
                 <li className="shopping-item-col">
                     <h4>InCart</h4>
                 </li>
+                <li className="shopping-item-col">
+                    
+                </li>
     </ul>)
 }
 

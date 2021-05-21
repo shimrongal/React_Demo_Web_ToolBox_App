@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Fredericka+the+Great|Zilla+Slab:300,400');
+@import url('https://fonts.googleapis.com/css2?family=Six+Caps&display=swap');
 
 #p-shopping-lists-container{
     width: 70%;
@@ -19,8 +20,9 @@
     display: inline;
     color: #0B5AA2;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 50px;
     text-align: left;
+    font-family: 'Six Caps', sans-serif;
 }
 
 #p-shopping-list-header-container svg{

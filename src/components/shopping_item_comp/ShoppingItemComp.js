@@ -1,4 +1,5 @@
 import {  useState } from "react";
+import { MdRemoveShoppingCart } from "react-icons/md";
 import { deleteShoppingItem, saveCheckBoxState } from "../../utils/HelperFunctions";
 import "./ShoppingItemComp.css";
 /**
@@ -19,7 +20,9 @@ function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) 
     const handleCheckBoxChange =()=>{
             saveCheckBoxState(currentListName,  item, !isCheckedItem)
             updateCheckItem(!isCheckedItem)   
-        }
+    }
+
+
     return(<ul className="display-flex-row list-border-style-shopping-content"> 
                 <li className="shopping-item-col">
                     <h5>{item.itemName}</h5>
@@ -33,6 +36,9 @@ function ShoppingItemComp({currentListName, item , isChecked , setItemDeleted}) 
                 <li className="shopping-item-checkbox-container">
                     <input className="shopping-item-checkbox"  type="checkbox" checked={isCheckedItem} onChange={()=>handleCheckBoxChange()} />  
                 </li> 
+                <li className="shopping-item-col" className="icon-container" onClick={handleTrashIconClick}>
+                     <MdRemoveShoppingCart />
+                </li>
 
         
         {/* TODO: create data base of item and corresponding images for better look and feal
