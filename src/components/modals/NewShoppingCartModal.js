@@ -1,6 +1,6 @@
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import {  Form ,Button, Modal } from "react-bootstrap";
+import {  Form , Modal } from "react-bootstrap";
 import { addShoppingCartItemToFireStore, addShoppingItemToFireStore } from "../../utils/HelperFunctions";
 
 function NewShoppingCartModal({show, onClose ,setUpdateList}) {
@@ -31,12 +31,12 @@ return(<Modal show={show} onHide={onClose} size="lg" >
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={onClose}>
+                <button variant="secondary" onClick={onClose}>
                     Cancel
-                </Button>
-                <Button variant="primary" onClick={newCartCreated}>
+                </button>
+                <button variant="primary" onClick={newCartCreated}>
                     Create Shopping Item
-                </Button>
+                </button>
             </Modal.Footer>
 
 </Modal>)

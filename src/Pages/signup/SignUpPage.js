@@ -1,6 +1,6 @@
 import "./SignUpPage.css"
 import React, { useCallback } from "react";
-import { Button, Col, Form } from "react-bootstrap";
+import {  Col, Form } from "react-bootstrap";
 import { withRouter } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 import UserModel from "../../models/UserModel";
@@ -67,9 +67,9 @@ const SignUpPage = ({ history , userList, updateUsersList}) => {
 
 
 
-        <Button variant="primary" type="submit">
+        <button variant="primary" type="submit">
           Submit
-        </Button>
+        </button>
       </Form>
     </div>
   );

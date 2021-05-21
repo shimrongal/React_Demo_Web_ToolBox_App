@@ -1,6 +1,6 @@
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.css';
-import { Col, Form ,Button, Modal } from "react-bootstrap";
+import { Col, Form , Modal } from "react-bootstrap";
 import ShoppingItemModel from "../../models/ShoppingItemModel";
 import { addShoppingItemToFireStore } from "../../utils/HelperFunctions";
 
@@ -49,12 +49,12 @@ return(<Modal show={show} onHide={onClose} size="lg" >
                 </Form>
             </Modal.Body>
             <Modal.Footer>
-                <Button variant="secondary" onClick={onClose}>
+                <button variant="secondary" onClick={onClose}>
                     Cancel
-                </Button>
-                <Button variant="primary" onClick={newItemCreated}>
+                </button>
+                <button variant="primary" onClick={newItemCreated}>
                     Create Shopping Item
-                </Button>
+                </button>
             </Modal.Footer>
 
 </Modal>)

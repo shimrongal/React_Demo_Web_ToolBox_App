@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Form, Modal } from "react-bootstrap";
+import {  Form, Modal } from "react-bootstrap";
 import OptionComp from "../OptionComp";
 import axios from "axios";
 
@@ -57,12 +57,12 @@ function ParkingAddressModal({show,  onClose,whatToShow, setMapUrl, cities , par
             </Form>
         </Modal.Body>
         <Modal.Footer>
-                <Button variant="secondary" onClick={onClose}>
+                <button variant="secondary" onClick={onClose}>
                     Cancel
-                </Button>
-                <Button variant="primary" onClick={saveAddressAndClose}>
+                </button>
+                <button variant="primary" onClick={saveAddressAndClose}>
                     Create New Address
-                </Button>
+                </button>
         </Modal.Footer>
 
     </Modal>);

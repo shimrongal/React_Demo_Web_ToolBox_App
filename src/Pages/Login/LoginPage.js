@@ -5,7 +5,7 @@ import React, { useCallback, useContext, useState } from "react";
 import { withRouter, Redirect } from "react-router";
 import  app   from "../../utils/FirebaseConfig";
 import {AuthContext} from "../../utils/Auth";
-import { Button, Form } from 'react-bootstrap';
+import {  Form } from 'react-bootstrap';
 /**
  * Created by Gal Shimron on 9/05/2021.
  * 
@@ -81,11 +81,11 @@ const LoginPage = () => {
               <Form.Label style={{visibility:'hidden'}}>
                 Forgot password?
               </Form.Label> 
-              <Button variant="primary" onClick={()=> setSignUpStatus(true)} >SignUp</Button>
+              <button variant="primary" onClick={()=> setSignUpStatus(true)} >SignUp</button>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            <button variant="primary" type="submit">
               Submit
-            </Button>
+            </button>
         </Form>
       
         </div>
