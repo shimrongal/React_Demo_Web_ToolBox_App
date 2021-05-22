@@ -15,6 +15,8 @@
     animation-name: leftToRight;
     animation-duration: 2s;
     animation-fill-mode: both;
+    color: lightskyblue !important;
+    font-weight: bolder;
   
 }
 
@@ -22,15 +24,18 @@
     flex: 1;
     list-style: none;
 
+
 }
 
 #c-oref-warning-container li:last-child {
   font-family: 'Amatic SC', cursive;
 
+
 }
 
 #c-oref-warning-container li::not(:last-child) {
   font-family: 'Suez One', serif;
+
 }
 
 

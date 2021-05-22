@@ -7,7 +7,7 @@ import axios from 'axios';
 
 
 export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
-     axios.get('http://www.oref.org.il/WarningMessages/History/AlertsHistory.json').then(res=>{
+     axios.get('https://www.oref.org.il/WarningMessages/History/AlertsHistory.json').then(res=>{
         if (res.data.length === 2){
             oldOrefWarningMessagesFromJson(updateOrefAlerts);
         }
@@ -20,6 +20,7 @@ export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
         }
     }).catch(error=>{
         console.error("OrefWarningMessagesManager error : " + error)  
+        oldOrefWarningMessagesFromJson(updateOrefAlerts);
     });  
 }
 
