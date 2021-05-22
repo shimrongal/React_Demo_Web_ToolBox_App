@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/shimrongal.github.io/static/css/main.77947c88.chunk.css",
+    "main.js": "/shimrongal.github.io/static/js/main.e52081d8.chunk.js",
+    "main.js.map": "/shimrongal.github.io/static/js/main.e52081d8.chunk.js.map",
+    "runtime-main.js": "/shimrongal.github.io/static/js/runtime-main.042a0a5a.js",
+    "runtime-main.js.map": "/shimrongal.github.io/static/js/runtime-main.042a0a5a.js.map",
+    "static/css/2.057cc0f5.chunk.css": "/shimrongal.github.io/static/css/2.057cc0f5.chunk.css",
+    "static/js/2.32a5e784.chunk.js": "/shimrongal.github.io/static/js/2.32a5e784.chunk.js",
+    "static/js/2.32a5e784.chunk.js.map": "/shimrongal.github.io/static/js/2.32a5e784.chunk.js.map",
+    "static/js/3.0f43f598.chunk.js": "/shimrongal.github.io/static/js/3.0f43f598.chunk.js",
+    "static/js/3.0f43f598.chunk.js.map": "/shimrongal.github.io/static/js/3.0f43f598.chunk.js.map",
+    "index.html": "/shimrongal.github.io/index.html",
+    "static/css/2.057cc0f5.chunk.css.map": "/shimrongal.github.io/static/css/2.057cc0f5.chunk.css.map",
+    "static/css/main.77947c88.chunk.css.map": "/shimrongal.github.io/static/css/main.77947c88.chunk.css.map",
+    "static/js/2.32a5e784.chunk.js.LICENSE.txt": "/shimrongal.github.io/static/js/2.32a5e784.chunk.js.LICENSE.txt",
+    "static/media/font-awesome.min.css": "/shimrongal.github.io/static/media/fontawesome-webfont.f691f37e.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.042a0a5a.js",
+    "static/css/2.057cc0f5.chunk.css",
+    "static/js/2.32a5e784.chunk.js",
+    "static/css/main.77947c88.chunk.css",
+    "static/js/main.e52081d8.chunk.js"
+  ]
+}
