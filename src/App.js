@@ -9,7 +9,7 @@ import SignUpPage from './pages/signup/SignUpPage';
 import PrivateRoute from "./utils/PrivateRoute";
 import { useEffect, useState } from 'react';
 import ParkingPage from './pages/parking/ParkingPage';
-import {  getMOCKCurrentWeatherByCityName } from './utils/WeatherManager';
+import {  getCurrentWeatherByCityName } from './utils/WeatherManager';
 import NavBarComp from './components/NavBarComp';
 import ShoppingListsPage from './pages/shopping_list/ShoppingListsPage';
 import NotFoundPage from './pages/not_found_page/NotFoundPage';
@@ -43,7 +43,7 @@ function App() {
 
   useEffect(()=>{
     getCityList(setCityNameArr); 
-    getMOCKCurrentWeatherByCityName(setCurrentWeatherObject);
+    getCurrentWeatherByCityName(setCurrentWeatherObject);
 
   },[]);
 

@@ -8,6 +8,23 @@ import axios from 'axios';
 
 export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
      axios.get('http://www.oref.org.il/WarningMessages/History/AlertsHistory.json').then(res=>{
+        if (res.data.length === 2){
+            oldOrefWarningMessagesFromJson(updateOrefAlerts);
+        }
+        else {
+            const alertArr = []
+            for (let index =0 ; index < 10 ; index++){
+                alertArr[index] = res.data[index];
+            }
+            updateOrefAlerts(alertArr);
+        }
+    }).catch(error=>{
+        console.error("OrefWarningMessagesManager error : " + error)  
+    });  
+}
+
+ const oldOrefWarningMessagesFromJson = (updateOrefAlerts)=>{
+    axios.get('piked_aoref_old_alerts.json').then(res=>{
         const alertArr = []
         for (let index =0 ; index < 10 ; index++){
             alertArr[index] = res.data[index];
@@ -15,7 +32,8 @@ export const orefWarningMessagesManager =  (updateOrefAlerts)=> {
         updateOrefAlerts(alertArr);
     }).catch(error=>{
         console.error("OrefWarningMessagesManager error : " + error)  
-    });
-    
+    });  
 }
+
+
 
